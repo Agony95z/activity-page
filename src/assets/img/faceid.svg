@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1462px" height="264px" viewBox="0 0 1462 264" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 10</title>
+    <defs>
+        <linearGradient x1="0%" y1="50%" x2="107.246436%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.05" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="50%" x2="107.246436%" y2="50%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.05" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="50%" x2="107.246436%" y2="50%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.05" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="50%" x2="107.246436%" y2="50%" id="linearGradient-4">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.05" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Helvetica-Bold, Helvetica" font-size="220" font-weight="bold">
+        <g id="OpenCFD" transform="translate(-229.000000, -430.000000)" fill-rule="nonzero">
+            <g id="编组-10" transform="translate(229.000000, 430.000000)">
+                <g id="编组-15" fill="url(#linearGradient-1)">
+                    <text id="O">
+                        <tspan x="0" y="213">O</tspan>
+                    </text>
+                </g>
+                <g id="编组-16" transform="translate(230.000000, 0.000000)" fill="url(#linearGradient-2)">
+                    <text id="p">
+                        <tspan x="0" y="213">p</tspan>
+                    </text>
+                </g>
+                <g id="编组-17" transform="translate(447.000000, 0.000000)" fill="url(#linearGradient-3)">
+                    <text id="e">
+                        <tspan x="0" y="213">e</tspan>
+                    </text>
+                </g>
+                <g id="编组-18" transform="translate(664.000000, 0.000000)" fill="url(#linearGradient-2)">
+                    <text id="n">
+                        <tspan x="0" y="213">n</tspan>
+                    </text>
+                </g>
+                <g id="编组-19" transform="translate(881.000000, 0.000000)" fill="url(#linearGradient-4)">
+                    <text id="C">
+                        <tspan x="0" y="213">C</tspan>
+                    </text>
+                </g>
+                <g id="编组-20" transform="translate(1098.000000, 0.000000)" fill="url(#linearGradient-2)">
+                    <text id="F">
+                        <tspan x="0" y="213">F</tspan>
+                    </text>
+                </g>
+                <g id="编组-21" transform="translate(1303.000000, 0.000000)" fill="url(#linearGradient-4)">
+                    <text id="D">
+                        <tspan x="0" y="213">D</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        @keyframes jumping {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+            100% { transform: translateY(0); }
+        }
+
+        .jumping-text {
+            font-size: 24px;
+            animation: jumping 0.5s infinite;
+        }
+    </style>
+</head>
+
+<body>
+<div class="jumping-text">Hello kWorld!</div>
+</body>
+</html>
