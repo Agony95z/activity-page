@@ -332,7 +332,9 @@ onMounted(() => {
       padding: 20px;
       box-sizing: border-box;
       background: #FFFFFF;
-      box-shadow: 0 0 20px 0 rgba(35,35,35,0.06);
+      z-index: 2;
+      box-shadow: 0 0 6px 0 rgba(35,35,35,0.06);
+      margin-top: 10px;
       &:not(:last-child) {
         margin-right: 20px;
       }
