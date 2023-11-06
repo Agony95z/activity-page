@@ -14,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
                 path: '/page1',
                 name: 'page1',
                 meta: {
-                    title: 'Page1'
+                    title: '云上仿真应用服务平台'
                 },
                 component: () => import('@/views/page1.vue')
             },
@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
                 path: '/page2',
                 name: 'page2',
                 meta: {
-                    title: 'Page2'
+                    title: '云上仿真应用服务平台'
                 },
                 component: () => import('@/views/page2.vue')
             },

@@ -79,7 +79,7 @@ onMounted(() => {
       </div>
       <div class="logo_btn">
         <div @click="handleLogo" class="logo_btn1">
-          LOGO
+          <img style="width: 100%;" src="../assets/img/logo.png" alt="">
         </div>
         <div class="btn" :class="{'btn_active': Number(Idx) === index}" v-for="(item, index) in logoBtnArr" :key="item.id">
           <div>{{ item.text }}</div>

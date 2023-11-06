@@ -104,7 +104,7 @@ onMounted(() => {
       </div>
       <div class="logo_btn">
         <div class="logo_btn1">
-          LOGO
+          <img style="width: 100%;" src="../assets/img/logo.png" alt="">
         </div>
         <div class="btn" @click="handleBannerBtn(index)" v-for="(item, index) in logoBtnArr" :key="item.id">
           <div>{{ item.text }}</div>
@@ -175,7 +175,10 @@ onMounted(() => {
               <div class="content" v-for="item in proArr" :key="item.id">
                 <div class="con_1">{{ item.text_1 }}</div>
                 <div class="con_2">{{ item.text_2 }}</div>
-                <div class="con_3" @click="handleMore">{{ item.text_3 }}</div>
+                <div class="con_3" @click="handleMore">
+                  {{ item.text_3 }}
+                  <img src="../assets/img/sj.svg" alt="">
+                </div>
                 <div class="con_4">{{ item.text_4 }}</div>
                 <div class="con_5">
                   <img style="width:300px;" :src="item.img" alt="">
