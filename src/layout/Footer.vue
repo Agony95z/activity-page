@@ -3,29 +3,32 @@
 </script>
 
 <template>
-<div class="footer">
-  <div class="footer_l">
-    <div class="text_1">
-      <div class="text_1_1">关于我们</div>
-      <div class="text_1_2 text_con">力学仿真平台</div>
-      <div class="text_1_3 text_con">资源中心</div>
-    </div>
-    <div class="text_2">
-      <div class="text_2_1">快捷链接</div>
-      <div class="text_2_2 text_con">服务与支持</div>
-      <div class="text_2_3 text_con">开发者平台</div>
+  <div class="hidden md:block">
+    <div class="footer">
+      <div class="footer_l">
+        <div class="text_1">
+          <div class="text_1_1">关于我们</div>
+          <div class="text_1_2 text_con">力学仿真平台</div>
+          <div class="text_1_3 text_con">资源中心</div>
+        </div>
+        <div class="text_2">
+          <div class="text_2_1">快捷链接</div>
+          <div class="text_2_2 text_con">服务与支持</div>
+          <div class="text_2_3 text_con">开发者平台</div>
+        </div>
+      </div>
+      <div class="footer_r">
+        <div class="contact_us">
+          <div class="contact_us_zh">联系我们</div>
+          <div class="contact_us_en">CONTACT US</div>
+        </div>
+        <div class="contact_pic">
+          <img src="../assets/img/qr.jpg" alt="">
+        </div>
+      </div>
     </div>
   </div>
-  <div class="footer_r">
-    <div class="contact_us">
-      <div class="contact_us_zh">联系我们</div>
-      <div class="contact_us_en">CONTACT US</div>
-    </div>
-    <div class="contact_pic">
-      <img src="../assets/img/qr.jpg" alt="">
-    </div>
-  </div>
-</div>
+  <div class="block md:hidden">12312</div>
 </template>
 
 <style scoped lang="scss">

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="43px" height="43px" viewBox="0 0 43 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>路径</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页备份" transform="translate(-389.000000, -1679.500000)">
+            <g id="编组-17" transform="translate(360.000000, 1520.000000)">
+                <g id="编组备份-2" transform="translate(0.000000, 140.500000)">
+                    <g id="编组-3" transform="translate(29.000000, 19.000000)">
+                        <circle id="椭圆形" stroke="#F51D00" stroke-width="3" cx="21" cy="21.5" r="20"></circle>
+                        <path d="M30.2891826,3.78352335 C27.5135101,2.32517082 24.3531195,1.5 21,1.5 C9.954305,1.5 1,10.454305 1,21.5 C1,32.545695 9.954305,41.5 21,41.5 C32.045695,41.5 41,32.545695 41,21.5 C41,19.3463065 40.6595812,17.2721221 40.0296158,15.328319" id="路径" stroke="#00E4FF" stroke-width="3" stroke-linecap="round"></path>
+                        <text id="1" font-family="eryadongfangti" font-size="24" font-weight="normal" fill="#FFFFFF">
+                            <tspan x="14" y="28.5">1</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

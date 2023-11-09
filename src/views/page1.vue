@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import {computed, onMounted, ref} from "vue";
 import { useRouter } from "vue-router";
-import Timeline from '@/components/timeline.vue'
-import Swiper from '@/components/swiper.vue'
+// import Timeline from '@/components/timeline.vue'
+// import Swiper from '@/components/swiper.vue'
+import Page1Phone from "./page1-phone.vue";
+import Header from '@/components/Header.vue';
 import con_1 from '@/assets/img/con_1.png';
 import con_2 from '@/assets/img/con_2.png';
 import con_3 from '@/assets/img/con_3.png';
 import con_4 from '@/assets/img/con_4.png';
 
+import soft_1 from '@/assets/img/soft_1.svg';
+import soft_2 from '@/assets/img/soft_2.svg';
+import soft_3 from '@/assets/img/soft_3.svg';
+import soft_4 from '@/assets/img/soft_4.svg';
+
 const router = useRouter();
-const logoBtnArr = [
-  {id: 1, text: 'OpenCFD'},
-  {id: 2, text: 'CDEM'},
-  {id: 3, text: 'CADO'},
-  {id: 4, text: 'xScale'},
-];
 const proArr = [
   {
     id: 1,
@@ -37,7 +38,7 @@ const proArr = [
     text_1: 'XXXXXXXXXX分析系统',
     text_2: 'CADO',
     text_3: '了解更多',
-    text_4: 'CADOXXXXXX系统一般分为二维和三维系统。系统内表达的任何设计都变成了几何图形，所依赖的数学模型是几何模型，系统记录了这些图素的几何特征。二维CAD系统一般由图形的输入与编辑、硬件接口、数据接口和二次开发工具等几部分组成。',
+    text_4: 'CADO系统一般分为二维和三维系统。系统内表达的任何设计都变成了几何图形，所依赖的数学模型是几何模型，系统记录了这些图素的几何特征。二维CAD系统一般由图形的输入与编辑、硬件接口、数据接口和二次开发工具等几部分组成。',
     img: con_3
   },
   {
@@ -56,6 +57,12 @@ const honorArr = [
   {id: 4, text: '国家高新技术企业'},
   {id: 5, text: 'XXXXXXXX'},
 ];
+const softwareArr = [
+  {id: 1, text: '3大领域核心求解器', img: soft_1},
+  {id: 2, text: '1款多物理场通用仿真云平台', img: soft_2},
+  {id: 3, text: '≥12个典型场景应用APP', img: soft_3},
+  {id: 4, text: '≥1000个中间层接口脚本', img: soft_4},
+];
 const offserX = ref(0);
 const transformStyle = computed({
   get() {
@@ -64,11 +71,14 @@ const transformStyle = computed({
   set(value) {
   }
 });
+
 const stepL = ref(-30);
 const stepR = ref(30);
 const fa = ref(null);
 const son = ref(null);
+const contentContainer = ref(null);
 const container = ref(null);
+const isShowArrow = ref(true);
 const handleLeft = () => {
   if (offserX.value === 0) return
   offserX.value = offserX.value + stepR.value
@@ -82,34 +92,24 @@ const activeNum = ref(0);
 const handleHonor = (index) => {
   activeNum.value = index;
 }
-const handleBannerBtn = (idx) => {
-  router.push(`/page2?idx=${idx}`)
-};
 const handleMore = () => {
   router.push(`/page2?idx=1`)
 };
 onMounted(() => {
   container.value.scrollTop = 0;
+  isShowArrow.value = computed(() => fa.value.clientWidth <= contentContainer.value.clientWidth);
 });
 </script>
 
 <template>
-  <div ref="container" class="container">
+  <div ref="container" class="pc_container hidden md:block">
+    <Header />
     <div class="banner-wrapper">
       <div class="banner">
         <img src="../assets/img/banner_1.png" alt="">
       </div>
       <div class="banner_text">
         <img src="../assets/img/banner_1_text.png" alt="">
-      </div>
-      <div class="logo_btn">
-        <div class="logo_btn1">
-          <img style="width: 100%;" src="../assets/img/logo.png" alt="">
-        </div>
-        <div class="btn" @click="handleBannerBtn(index)" v-for="(item, index) in logoBtnArr" :key="item.id">
-          <div>{{ item.text }}</div>
-          <div>+</div>
-        </div>
       </div>
       <div class="learn_more" @click="handleMore">
         <div class="jump_wrapper">
@@ -130,48 +130,67 @@ onMounted(() => {
           <div>
             <img src="../assets/img/tip_1.svg" alt="">
           </div>
-          <div class="tip_text">提升质量</div>
+          <div class="tip_text">先进内核</div>
         </div>
         <div class="tip">
           <div>
             <img src="../assets/img/tip_2.svg" alt="">
           </div>
-          <div class="tip_text">降低成本</div>
+          <div class="tip_text">海量算力</div>
         </div>
         <div class="tip">
           <div>
             <img src="../assets/img/tip_3.svg" alt="">
           </div>
-          <div class="tip_text">缩短周期</div>
+          <div class="tip_text">高效并行</div>
         </div>
         <div class="tip">
           <div>
             <img src="../assets/img/tip_4.svg" alt="">
           </div>
-          <div class="tip_text">创新技术</div>
+          <div class="tip_text">多场耦合</div>
+        </div>
+        <div class="tip">
+          <div>
+            <img src="../assets/img/tip_5.svg" alt="">
+          </div>
+          <div class="tip_text">即开即用</div>
         </div>
       </div>
     </div>
     <div class="product-container">
       <div class="pro_one">
         <div class="pro_text_l">
-          <div class="text_1">PRODUCTS</div>
-          <div class="text_2">产品中心</div>
+          <div class="text_1">SOFTWARE CENTER</div>
+          <div class="text_2">软件中心</div>
         </div>
-        <div class="pro_text_r">
+<!--        <div class="pro_text_r">
           <div class="text_x">XXXXXXXXXXXXXXXXXXXXXXX</div>
           <div class="text_x">XXXXXXXXXXXXXXXXXX</div>
           <div class="text_cn">独立自主  全过程分析  多场耦合  快速高效协同  应用场景广泛</div>
+        </div>-->
+      </div>
+      <div class="pro_software flex justify-around mt-[100px]">
+        <div class="soft_l flex flex-col justify-center">
+          <div class="soft_item w-[280px] h-[80px] flex justify-between items-center" v-for="item in softwareArr" :key="item.id">
+            <div class="pl-[20px] h-[43px] flex items-center">
+              <img class="w-full" :src="item.img" alt="">
+            </div>
+            <div class="flex-1 pl-5 text-[14px] text-white font-medium">{{ item.text }}</div>
+          </div>
+        </div>
+        <div class="soft_r w-[676px] h-[563px]">
+          <img class="w-full" src="../assets/img/soft_r.png" alt="">
         </div>
       </div>
-      <div class="pro_two">
-        <div @click="handleLeft" class="arrow_l">
+      <div class="pro_two" :class="{'flex': !isShowArrow.value, 'justify-center': !isShowArrow.value}">
+        <div v-if="isShowArrow.value" @click="handleLeft" class="arrow_l">
           <div style="width: 48px; height: 48px;" class="arrow_icon_l">
           </div>
         </div>
-        <div ref="fa" class="center">
+        <div ref="fa" class="center" :class="{'flex': !isShowArrow.value, 'justify-center': !isShowArrow.value}">
           <div ref="son" class="over_container" :style="{ transform: transformStyle }">
-            <div style="display: flex;">
+            <div ref="contentContainer" style="display: flex;">
               <div class="content" v-for="item in proArr" :key="item.id">
                 <div class="con_1">{{ item.text_1 }}</div>
                 <div class="con_2">{{ item.text_2 }}</div>
@@ -181,13 +200,13 @@ onMounted(() => {
                 </div>
                 <div class="con_4">{{ item.text_4 }}</div>
                 <div class="con_5">
-                  <img style="width:300px;" :src="item.img" alt="">
+                  <img style="" :src="item.img" alt="">
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div @click="handleRight" class="arrow_r">
+        <div v-if="isShowArrow.value" @click="handleRight" class="arrow_r">
           <div style="width: 48px; height: 48px;" class="arrow_icon">
           </div>
         </div>
@@ -196,13 +215,13 @@ onMounted(() => {
     <div class="pro_three">
       <div class="pro_text_l">
         <div class="text_1">HONOR&AWARDS</div>
-        <div class="text_2">荣誉资质</div>
+        <div class="text_2">奖励荣誉</div>
       </div>
-      <div class="pro_text_r">
+<!--      <div class="pro_text_r">
         <div class="text_x">XXXXXXXXXXXXXXXXXXXXXXX</div>
         <div class="text_x">XXXXXXXXXXXXXXXXXX</div>
         <div class="text_cn">独立自主  全过程分析  多场耦合  快速高效协同  应用场景广泛</div>
-      </div>
+      </div>-->
     </div>
     <div class="pro_four">
       <div class="honor_wrapper">
@@ -222,7 +241,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="pro_five">
+<!--    <div class="pro_five">
       <div class="pro_text_l">
         <div class="text_1">HISTORY</div>
         <div class="text_2">科研进展</div>
@@ -242,11 +261,21 @@ onMounted(() => {
           <swiper></swiper>
         </div>
       </div>
-    </div>
+    </div>-->
+  </div>
+  <div class="block md:hidden">
+    <page1-phone></page1-phone>
   </div>
 </template>
 
 <style scoped lang="scss">
+.soft_item {
+  background: linear-gradient(90deg, #3545BD 0%, #528EE8 100%);
+  border-radius: 4px;
+  &:not(:last-child) {
+    margin-bottom: 60px;
+  }
+}
 :deep(.el-timeline) {
   height: 100%;
   padding-left: 0;
@@ -256,12 +285,15 @@ onMounted(() => {
 }
 .product-container {
   width: 100%;
-  height: 1000px;
-  background: url('../assets/img/product_center_bg.svg') no-repeat;
+  //height: 1000px;
+  background: url('../assets/img/product_center_bg.png') no-repeat;
   //background-size: 100% 100%;
   background-size: cover;
   padding-top: 140px;
   //padding-bottom: 180px;
+}
+.pro_software {
+  padding: 0 10%;
 }
 .pro_one {
   padding: 0 20%;
@@ -272,7 +304,7 @@ onMounted(() => {
   .pro_text_l {
     flex: 1;
     position: relative;
-    border-right: 1px solid #D8D8D8;
+    //border-right: 1px solid #D8D8D8;
     .text_1 {
       position: absolute;
       z-index: -2;
@@ -309,7 +341,7 @@ onMounted(() => {
 }
 .pro_two {
   width: 100%;
-  padding: 195px 45px 0;
+  padding: 160px 45px 160px 45px;
   box-sizing: border-box;
   overflow: hidden;
   display: flex;
@@ -324,9 +356,7 @@ onMounted(() => {
       display: inline-block;
     }
     .content {
-      flex: 1;
-      //width: 380px;
-      flex-shrink: 0;
+      width: 380px;
       text-align: center;
       height: 550px;
       padding: 20px;
@@ -352,11 +382,16 @@ onMounted(() => {
         cursor: pointer;
         color: #0055D5;
         margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        img {
+          margin-left: 10px;
+        }
       }
       .con_4 {
         font-size: 14px;
         color: #232323;
-        margin-bottom: 35px;
+        margin-bottom: 25px;
         text-align: left;
         line-height: 28px;
       }
@@ -392,15 +427,15 @@ onMounted(() => {
   }
 }
 .pro_three, .pro_five {
-  padding: 0 20%;
+  padding: 0 15%;
   box-sizing: border-box;
   height: 90px;
-  margin: 150px auto 0;
+  margin: 20px auto 0;
   display: flex;
   .pro_text_l {
     flex: 1;
     position: relative;
-    border-right: 1px solid #D8D8D8;
+    //border-right: 1px solid #D8D8D8;
     .text_1 {
       position: absolute;
       z-index: 1;
@@ -438,7 +473,7 @@ onMounted(() => {
   }
 }
 .pro_four {
-  margin-top: 50px;
+  margin-top: 20px;
   padding: 150px 10%;
   height: 700px;
   box-sizing: border-box;
@@ -449,7 +484,7 @@ onMounted(() => {
   .honor_wrapper {
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
+    //margin-top: 50px;
     .honor_text {
       cursor: pointer;
       margin-bottom: 50px;
@@ -509,7 +544,7 @@ onMounted(() => {
 }
 .pro_six {
   background: #F7F7F8;
-  padding: 150px 20%;
+  padding: 150px 15%;
   .six_l {
     height: 100%;
   }
@@ -552,7 +587,7 @@ onMounted(() => {
     font-weight: 400;
   }
   .us_r {
-    flex: 1.5;
+    flex: 2;
     display: flex;
     padding-right: 140px;
     padding-left: 20px;
@@ -601,36 +636,35 @@ onMounted(() => {
     animation: jumping 0.8s infinite;
   }
 }
-.container {
+.pc_container {
   width: 100%;
   .banner-wrapper {
     position: relative;
   }
-  .logo_btn {
+  /*.logo_btn {
     display: flex;
-    position: absolute;
-    top: 0;
+    justify-content: space-between;
+    align-items: center;
     box-sizing: border-box;
-    height: 150px;
-    left: 50%;
-    transform: translateX(-50%);
+    height: 120px;
     .logo_btn1 {
-      //width: 312px;
-      flex: 1.5;
-      min-width: 220px;
-      height: 150px;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #fff;
+      height: 120px;
       font-size: 45px;
+      padding-left: 60px;
       font-family: yixinchongfenghao, sans-serif;
       color: #7E7E7E;
+      img {
+        height: 80px;
+        width: 220px;
+      }
     }
     .btn {
       flex: 1;
-      min-width: 180px;
-      height: 150px;
+      width: 180px;
+      height: 120px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -646,14 +680,22 @@ onMounted(() => {
         content: '';
         position: absolute;
         width: 1px;
-        height: 150px;
-        background: transparent;
+        height: 120px;
+        background: #E0E0E0;
         top: 0;
         right: 0;
       }
-      //border-right: 1px solid #FFFFFF;
+      &:first-child::before {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 120px;
+        background: #E0E0E0;
+        top: 0;
+        left: 0;
+      }
     }
-  }
+  }*/
   .banner_text {
     position: absolute;
     width: 761px;

@@ -9,11 +9,17 @@ declare module 'vue' {
   export interface GlobalComponents {
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
+    ElTabPane: typeof import('element-plus/es')['ElTabPane']
+    ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTimeline: typeof import('element-plus/es')['ElTimeline']
     ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
+    Header: typeof import('./src/components/Header.vue')['default']
+    HeaderPhone: typeof import('./src/components/HeaderPhone.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Swiper: typeof import('./src/components/swiper.vue')['default']
+    SwiperPhone: typeof import('./src/components/SwiperPhone.vue')['default']
+    TabsPhone: typeof import('./src/components/TabsPhone.vue')['default']
     Timeline: typeof import('./src/components/timeline.vue')['default']
   }
 }

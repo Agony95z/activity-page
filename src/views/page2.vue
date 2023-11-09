@@ -1,20 +1,11 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from "vue-router";
+import { computed, onMounted, ref } from "vue";
+import Header from '@/components/Header.vue';
 import soft_1 from '@/assets/img/soft_1.png';
 import soft_2 from '@/assets/img/soft_2.png';
 import soft_3 from '@/assets/img/soft_3.png';
-import {computed, onMounted, ref} from "vue";
 
-const router = useRouter();
-const handleLogo = () => {
-  router.push('/page1');
-};
-const logoBtnArr = [
-  {id: 1, text: 'OpenCFD'},
-  {id: 2, text: 'CDEM'},
-  {id: 3, text: 'CADO'},
-  {id: 4, text: 'xScale'},
-];
+
 const cfdArr = [
   {id: 1, text1: 'OpenCFD-SC', text2: '高精度有限差分求解器，主要用于湍流等复杂流动的直接数值模拟(DNS)、大涡模拟(LES)等高分辨率计算'},
   {id: 2, text1: 'OpenCFD-EC', text2: '多块结构网格有限体积求解器，主要用于工程复杂流场计算'},
@@ -32,10 +23,10 @@ const timeArr = [
   {id: 2, text1: '2015', text2: '全国并行应用挑战赛“最佳应用奖”'},
   {id: 3, text1: '2018', text2: '陕西省科学技术二等奖'},
   {id: 4, text1: '2019', text2: '中国科学院信息化优秀案例'},
-  {id: 5, text1: '2020', text2: '国家超算广州中心“天河之星”优秀应用奖', active: true},
-  {id: 6, text1: '2022', text2: '中国空气动力学科学技术一等奖(自然科学类)'},
+  {id: 5, text1: '2020', text2: '国家超算广州中心“天河之星”优秀应用奖'},
+  {id: 6, text1: '2022', text2: '中国空气动力学科学技术一等奖(自然科学类)', active: true},
 ];
-const offserX = ref(0);
+const offserX = ref(-240);
 const transformStyle = computed({
   get() {
     return `translateX(${offserX.value}px)`;
@@ -58,15 +49,14 @@ const handleRight = () => {
   offserX.value = offserX.value + stepL.value
 };
 
-const route = useRoute();
-const Idx = route.query.idx;
 onMounted(() => {
   container.value.scrollTop = 0;
 });
 </script>
 
 <template>
-  <div ref="container" class="container">
+  <div ref="container" class="pc_container">
+    <Header />
     <div class="banner-wrapper">
       <div class="banner">
         <img src="../assets/img/banner_2.png" alt="">
@@ -76,15 +66,6 @@ onMounted(() => {
       </div>
       <div class="banner_text_2">
         <img src="../assets/img/faceid.svg" alt="">
-      </div>
-      <div class="logo_btn">
-        <div @click="handleLogo" class="logo_btn1">
-          <img style="width: 100%;" src="../assets/img/logo.png" alt="">
-        </div>
-        <div class="btn" :class="{'btn_active': Number(Idx) === index}" v-for="(item, index) in logoBtnArr" :key="item.id">
-          <div>{{ item.text }}</div>
-          <div>+</div>
-        </div>
       </div>
     </div>
     <div class="introduce">
@@ -107,14 +88,14 @@ onMounted(() => {
 
       <div class="cfd_wrapper">
         <div class="pro_text_l">
-          <div class="text_1">XXXXXXXXXXXX</div>
-          <div class="text_2">OpenCFD 的求解器</div>
+          <div class="text_1">Functional Module</div>
+          <div class="text_2">功能模块</div>
         </div>
-        <div class="pro_text_r">
+<!--        <div class="pro_text_r">
           <div class="text_x">XXXXXXXXXXXXXXXXXXXXXXX</div>
           <div class="text_x">XXXXXXXXXXXXXXXXXX</div>
           <div class="text_cn">独立自主  全过程分析  多场耦合  快速高效协同  应用场景广泛</div>
-        </div>
+        </div>-->
       </div>
 
       <div class="cfd_introduce">
@@ -129,14 +110,14 @@ onMounted(() => {
 
     <div class="software_wrapper">
       <div class="pro_text_l">
-        <div class="text_1">Software Example</div>
-        <div class="text_2">软件算例</div>
+        <div class="text_1">Applications</div>
+        <div class="text_2">应用案例</div>
       </div>
-      <div class="pro_text_r">
-        <div class="text_x">XXXXXXXXXXXXXXXXXXXXXXX</div>
-        <div class="text_x">XXXXXXXXXXXXXXXXXX</div>
-        <div class="text_cn">独立自主  全过程分析  多场耦合  快速高效协同  应用场景广泛</div>
-      </div>
+<!--      <div class="pro_text_r">-->
+<!--        <div class="text_x">XXXXXXXXXXXXXXXXXXXXXXX</div>-->
+<!--        <div class="text_x">XXXXXXXXXXXXXXXXXX</div>-->
+<!--        <div class="text_cn">独立自主  全过程分析  多场耦合  快速高效协同  应用场景广泛</div>-->
+<!--      </div>-->
     </div>
 
     <div class="software_content">
@@ -414,7 +395,7 @@ onMounted(() => {
   }
 }
 .cfd_wrapper, .software_wrapper, .award_wrapper {
-  padding: 0 20%;
+  padding: 0 15%;
   box-sizing: border-box;
   height: 90px;
   margin: 0 auto;
@@ -422,7 +403,7 @@ onMounted(() => {
   .pro_text_l {
     flex: 1;
     position: relative;
-    border-right: 1px solid #D8D8D8;
+    //border-right: 1px solid #D8D8D8;
     .text_1 {
       position: absolute;
       z-index: 1;
@@ -468,7 +449,7 @@ onMounted(() => {
     }
   }
 }
-.software_wrapper, .award_wrapper {
+.software_wrapper, .award_wrapper, .cfd_wrapper {
   .pro_text_l {
     border-right: unset;
     .text_2 {
@@ -533,63 +514,10 @@ onMounted(() => {
     }
   }
 }
-.container {
+.pc_container {
   width: 100%;
   .banner-wrapper {
     position: relative;
-  }
-  .logo_btn {
-    display: flex;
-    position: absolute;
-    top: 0;
-    box-sizing: border-box;
-    height: 150px;
-    left: 50%;
-    transform: translateX(-50%);
-    .logo_btn1 {
-      //width: 312px;
-      flex: 1.5;
-      min-width: 220px;
-      height: 150px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #fff;
-      font-size: 45px;
-      font-family: yixinchongfenghao, sans-serif;
-      color: #7E7E7E;
-      cursor: pointer;
-    }
-    .btn {
-      flex: 1;
-      min-width: 180px;
-      height: 150px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      //background: #fff;
-      background-color: rgba(255,255,255,0.6);
-      position: relative;
-      cursor: pointer;
-      &.btn_active {
-        background: #5B95F8;
-        color: #fff;
-      }
-      &:hover {
-        background: #5B95F8;
-        color: #fff;
-      }
-      &:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        width: 1px;
-        height: 150px;
-        background: transparent;
-        top: 0;
-        right: 0;
-      }
-    }
   }
   .banner_text_2 {
     position: absolute;
