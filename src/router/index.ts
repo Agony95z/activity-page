@@ -11,6 +11,14 @@ const routes: Array<RouteRecordRaw> = [
         },
         children: [
             {
+                path: '/home',
+                name: 'home',
+                meta: {
+                    title: '云上仿真应用服务平台'
+                },
+                component: () => import('@/views/home.vue')
+            },
+            {
                 path: '/page1',
                 name: 'page1',
                 meta: {
@@ -25,6 +33,22 @@ const routes: Array<RouteRecordRaw> = [
                     title: '云上仿真应用服务平台'
                 },
                 component: () => import('@/views/page2.vue')
+            },
+            {
+                path: '/page3',
+                name: 'page3',
+                meta: {
+                    title: '云上仿真应用服务平台'
+                },
+                component: () => import('@/views/page3.vue')
+            },
+            {
+                path: '/page4',
+                name: 'page4',
+                meta: {
+                    title: '云上仿真应用服务平台'
+                },
+                component: () => import('@/views/page4.vue')
             },
         ]
     },

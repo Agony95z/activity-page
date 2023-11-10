@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1124px" height="264px" viewBox="0 0 1124 264" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 10</title>
+    <defs>
+        <linearGradient x1="0%" y1="50%" x2="107.246436%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.05" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="50%" x2="107.246436%" y2="50%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.05" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="50%" x2="107.246436%" y2="50%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.05" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="50%" x2="107.246436%" y2="50%" id="linearGradient-4">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.05" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="50%" x2="107.246436%" y2="50%" id="linearGradient-5">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.05" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Helvetica-Bold, Helvetica" font-size="220" font-weight="bold">
+        <g id="SiMech" transform="translate(-398.000000, -400.000000)" fill-rule="nonzero">
+            <g id="编组-10" transform="translate(398.000000, 400.000000)">
+                <g id="编组-15" fill="url(#linearGradient-1)">
+                    <text id="S">
+                        <tspan x="0" y="213">S</tspan>
+                    </text>
+                </g>
+                <g id="编组-16" transform="translate(217.000000, 0.000000)" fill="url(#linearGradient-2)">
+                    <text id="i">
+                        <tspan x="0" y="213">i</tspan>
+                    </text>
+                </g>
+                <g id="编组-17" transform="translate(349.000000, 0.000000)" fill="url(#linearGradient-3)">
+                    <text id="M">
+                        <tspan x="0" y="213">M</tspan>
+                    </text>
+                </g>
+                <g id="编组-18" transform="translate(603.000000, 0.000000)" fill="url(#linearGradient-4)">
+                    <text id="e">
+                        <tspan x="0" y="213">e</tspan>
+                    </text>
+                </g>
+                <g id="编组-19" transform="translate(796.000000, 0.000000)" fill="url(#linearGradient-4)">
+                    <text id="c">
+                        <tspan x="0" y="213">c</tspan>
+                    </text>
+                </g>
+                <g id="编组-20" transform="translate(989.000000, 0.000000)" fill="url(#linearGradient-5)">
+                    <text id="h">
+                        <tspan x="0" y="213">h</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

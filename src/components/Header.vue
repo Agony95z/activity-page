@@ -9,12 +9,12 @@ const logoBtnArr = [
   {id: 4, text: 'xScale'},
 ];
 const handleBannerBtn = (idx) => {
-  router.push(`/page2?idx=${idx}`)
+  router.push(`/page${idx + 1}?idx=${idx}`)
 };
 const route = useRoute();
 const Idx = route.query.idx;
 const handleLogo = () => {
-  router.push('/page1');
+  router.push('/home');
 };
 </script>
 

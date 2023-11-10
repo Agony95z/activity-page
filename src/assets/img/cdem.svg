@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="848px" height="264px" viewBox="0 0 848 264" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 10</title>
+    <defs>
+        <linearGradient x1="0%" y1="50%" x2="107.246436%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.05" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="50%" x2="107.246436%" y2="50%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.05" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="50%" x2="107.246436%" y2="50%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.05" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Helvetica-Bold, Helvetica" font-size="220" font-weight="bold">
+        <g id="CDEM" transform="translate(-536.000000, -400.000000)" fill-rule="nonzero">
+            <g id="编组-10" transform="translate(536.000000, 400.000000)">
+                <g id="编组-15" fill="url(#linearGradient-1)">
+                    <text id="C">
+                        <tspan x="0" y="213">C</tspan>
+                    </text>
+                </g>
+                <g id="编组-16" transform="translate(230.000000, 0.000000)" fill="url(#linearGradient-1)">
+                    <text id="D">
+                        <tspan x="0" y="213">D</tspan>
+                    </text>
+                </g>
+                <g id="编组-17" transform="translate(447.000000, 0.000000)" fill="url(#linearGradient-2)">
+                    <text id="E">
+                        <tspan x="0" y="213">E</tspan>
+                    </text>
+                </g>
+                <g id="编组-18" transform="translate(664.000000, 0.000000)" fill="url(#linearGradient-3)">
+                    <text id="M">
+                        <tspan x="0" y="213">M</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

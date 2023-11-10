@@ -1,67 +1,40 @@
 <script setup lang="ts">
-import {computed, onMounted, ref} from "vue";
-import { useRouter } from "vue-router";
-// import Timeline from '@/components/timeline.vue'
-// import Swiper from '@/components/swiper.vue'
-import Page1Phone from "./page1-phone.vue";
+import { computed, onMounted, ref } from "vue";
 import Header from '@/components/Header.vue';
-import con_1 from '@/assets/img/con_1.png';
-import con_2 from '@/assets/img/con_2.png';
-import con_3 from '@/assets/img/con_3.png';
-import con_4 from '@/assets/img/con_4.png';
+import TitleWrapper from "@/components/TitleWrapper.vue";
+import TransWrapper from "@/components/TransWrapper.vue";
+import soft_1 from '@/assets/img/soft_1.png';
+import soft_2 from '@/assets/img/soft_2.png';
+import soft_3 from '@/assets/img/soft_3.png';
+import soft_4 from '@/assets/img/soft_4.png';
 
-import soft_1 from '@/assets/img/soft_1.svg';
-import soft_2 from '@/assets/img/soft_2.svg';
-import soft_3 from '@/assets/img/soft_3.svg';
-import soft_4 from '@/assets/img/soft_4.svg';
 
-const router = useRouter();
-const proArr = [
-  {
-    id: 1,
-    text_1: '高精度计算流体力学软件',
-    text_2: 'OpenCFD',
-    text_3: '了解更多',
-    text_4: 'OpenCFD是中国科学院力学研究所李新亮研究员课题组开发的一套高精度计算流体力学软件。该软件集成了课题组自行开发的系列高精度差分格式及当前流行的多种高精度差分格式，高计算精度可达7阶，主要用于湍流及燃烧直接数值模拟、大涡模拟等高分辨率模拟。',
-    img: con_1
-  },
-  {
-    id: 2,
-    text_1: '数值分析系统',
-    text_2: 'CDEM数值分析系统',
-    text_3: '了解更多',
-    text_4: '中国科学院力学研究所历时25年自主研发，基于广义拉格朗日方程理论框架，将连续介质数值方法与非连续介质数值方法进行深度融合，在能量层面实现了有限元、离散元及无网格算法的统一，可实现静动载荷下地质体及人工材料渐进破坏过程的模拟。',
-    img: con_2
-  },
-  {
-    id: 1,
-    text_1: 'XXXXXXXXXX分析系统',
-    text_2: 'CADO',
-    text_3: '了解更多',
-    text_4: 'CADO系统一般分为二维和三维系统。系统内表达的任何设计都变成了几何图形，所依赖的数学模型是几何模型，系统记录了这些图素的几何特征。二维CAD系统一般由图形的输入与编辑、硬件接口、数据接口和二次开发工具等几部分组成。',
-    img: con_3
-  },
-  {
-    id: 1,
-    text_1: '非线性力学国家重点实验室',
-    text_2: 'xScale跨尺度力学计算软件',
-    text_3: '了解更多',
-    text_4: 'xScale构建了自主的前端界面+后端计算基础框架，前端界面包括前处理、计算调用、后处理、可视化功能；后端计算包括多个不同尺度的计算力学模块，针对高铁、海洋、航空、盾构等工程结构开展了广泛应用，面向具体需求，可实现高度定制化的应用开发。',
-    img: con_4
-  },
+const cfdArr = [
+  {id: 1, text1: 'OpenCFD-SC', text2: '高精度有限差分求解器，主要用于湍流等复杂流动的直接数值模拟(DNS)、大涡模拟(LES)等高分辨率计算'},
+  {id: 2, text1: 'OpenCFD-EC', text2: '多块结构网格有限体积求解器，主要用于工程复杂流场计算'},
+  {id: 3, text1: 'OpenCFD-Comb', text2: '化学反应流动高精度差分求解器，主要用于化学反应流场的高分辨率计算'},
+  {id: 4, text1: 'OpenCFD-SCU', text2: 'OpenCFD-SC的GPU版。 支持上万块GPU卡的大规模并行'},
 ];
-const honorArr = [
-  {id: 1, text: '中国空气动力学会科学技术一等奖'},
-  {id: 2, text: '中国空气动力学会科学技术一等奖'},
-  {id: 3, text: '央企先进集体'},
-  {id: 4, text: '国家高新技术企业'},
-  {id: 5, text: 'XXXXXXXX'},
+const softArr = [
+  {id:1, text: 'Mach 2.9, 24° Compression Corner', img: soft_1},
+  {id:2, text: 'DNS of turbulent/ transition flow over ONEAR-M6 wing', img: soft_2},
+  {id:3, text: 'DNS of RM instability', img: soft_3},
+  {id:4, text: 'DNS of shock-wave turbulent layer interaction', img: soft_4},
 ];
-const softwareArr = [
-  {id: 1, text: '3大领域核心求解器', img: soft_1},
-  {id: 2, text: '1款多物理场通用仿真云平台', img: soft_2},
-  {id: 3, text: '≥12个典型场景应用APP', img: soft_3},
-  {id: 4, text: '≥1000个中间层接口脚本', img: soft_4},
+
+const timeArr = [
+  {id: 1, text1: '2013', text2: '陕西省科学技术三等奖'},
+  {id: 2, text1: '2015', text2: '全国并行应用挑战赛“最佳应用奖”'},
+  {id: 3, text1: '2018', text2: '陕西省科学技术二等奖'},
+  {id: 4, text1: '2019', text2: '中国科学院信息化优秀案例'},
+  {id: 5, text1: '2020', text2: '国家超算广州中心“天河之星”优秀应用奖'},
+  {id: 6, text1: '2022', text2: '中国空气动力学科学技术一等奖(自然科学类)', active: true},
+];
+const featureArr = [
+  {id:1, text: '多尺度力学基础框架', content: '构建了工程材料和结构的多尺度力学计算基础框架，由前处理、后处理、计算模块三大部分组成', img: ''},
+  {id:2, text: '计算模块集成', content: '包含结构有限元分析、结构疲劳寿命分析、微观分子模拟、分子/有限元耦合分析等计算模块', img: ''},
+  {id:3, text: '工程应用和基础研究结合', content: '既可应用于工程材料和结构的力学性能分析，也可用于基础力学机理和算法研究', img: ''},
+  {id:4, text: '灵活的可扩展性', content: '可针对具体行业需求进行定制化开发，也可通过面向对象开发进行功能扩展', img: ''},
 ];
 const offserX = ref(0);
 const transformStyle = computed({
@@ -71,16 +44,13 @@ const transformStyle = computed({
   set(value) {
   }
 });
-
 const stepL = ref(-30);
 const stepR = ref(30);
 const fa = ref(null);
 const son = ref(null);
-const contentContainer = ref(null);
 const container = ref(null);
-const isShowArrow = ref(true);
 const handleLeft = () => {
-  if (offserX.value === 0) return
+  if (offserX.value >= 0) return
   offserX.value = offserX.value + stepR.value
 };
 const handleRight = () => {
@@ -88,349 +58,412 @@ const handleRight = () => {
   if (isOverFlow) return
   offserX.value = offserX.value + stepL.value
 };
-const activeNum = ref(0);
-const handleHonor = (index) => {
-  activeNum.value = index;
-}
-const handleMore = () => {
-  router.push(`/page2?idx=1`)
-};
+
 onMounted(() => {
   container.value.scrollTop = 0;
-  isShowArrow.value = computed(() => fa.value.clientWidth <= contentContainer.value.clientWidth);
+  offserX.value = fa.value.clientWidth - son.value.clientWidth;
 });
 </script>
 
 <template>
-  <div ref="container" class="pc_container hidden md:block">
+  <div ref="container" class="pc_container">
     <Header />
     <div class="banner-wrapper">
       <div class="banner">
-        <img src="../assets/img/banner_1.png" alt="">
+        <img src="../assets/img/banner_2.png" alt="">
       </div>
       <div class="banner_text">
-        <img src="../assets/img/banner_1_text.png" alt="">
+        <img src="../assets/img/banner_2_text.svg" alt="">
       </div>
-      <div class="learn_more" @click="handleMore">
-        <div class="jump_wrapper">
-          <div>了解更多</div>
-          <div class="more_arrow">
-            <img src="../assets/img/jiantou.svg" alt="">
-          </div>
-        </div>
+      <div class="banner_text_2">
+        <img src="../assets/img/faceid.svg" alt="">
       </div>
     </div>
-    <div class="choose_us">
-      <div class="us_l">
-        <div>WHY CHOOSE US</div>
-        <div>选择我们的四大理由</div>
-      </div>
-      <div class="us_r">
-        <div class="tip">
-          <div>
-            <img src="../assets/img/tip_1.svg" alt="">
+    <div class="introduce">
+      <div style="position: relative; height: 370px;">
+        <div class="introduce_center">
+          <div class="top_text">
+            <div class="text_1">About OpenCFD</div>
+            <div class="text_2">OpenCFD简介</div>
           </div>
-          <div class="tip_text">先进内核</div>
-        </div>
-        <div class="tip">
-          <div>
-            <img src="../assets/img/tip_2.svg" alt="">
-          </div>
-          <div class="tip_text">海量算力</div>
-        </div>
-        <div class="tip">
-          <div>
-            <img src="../assets/img/tip_3.svg" alt="">
-          </div>
-          <div class="tip_text">高效并行</div>
-        </div>
-        <div class="tip">
-          <div>
-            <img src="../assets/img/tip_4.svg" alt="">
-          </div>
-          <div class="tip_text">多场耦合</div>
-        </div>
-        <div class="tip">
-          <div>
-            <img src="../assets/img/tip_5.svg" alt="">
-          </div>
-          <div class="tip_text">即开即用</div>
-        </div>
-      </div>
-    </div>
-    <div class="product-container">
-      <div class="pro_one">
-        <div class="pro_text_l">
-          <div class="text_1">SOFTWARE CENTER</div>
-          <div class="text_2">软件中心</div>
-        </div>
-<!--        <div class="pro_text_r">
-          <div class="text_x">XXXXXXXXXXXXXXXXXXXXXXX</div>
-          <div class="text_x">XXXXXXXXXXXXXXXXXX</div>
-          <div class="text_cn">独立自主  全过程分析  多场耦合  快速高效协同  应用场景广泛</div>
-        </div>-->
-      </div>
-      <div class="pro_software flex justify-around mt-[100px]">
-        <div class="soft_l flex flex-col justify-center">
-          <div class="soft_item w-[280px] h-[80px] flex justify-between items-center" v-for="item in softwareArr" :key="item.id">
-            <div class="pl-[20px] h-[43px] flex items-center">
-              <img class="w-full" :src="item.img" alt="">
+          <div class="content">
+            <div class="con_l">
+              OpenCFD软件是中国科学院力学研究所李新亮研究员课题组开发的一套高精度计算流体力学软件。该软件集成了课题组自行开发的系列高精度差分格式及当前流行的多种高精度差分格式，其最高计算精度最高可达7阶，主要用于湍流及燃烧直接数值模拟、大涡模拟等高分辨率模拟。此外，该软件具有非常强的并行性能，可支持上百亿网格，数十万CPU核心以及数万块GPU卡超大规模异构并行。   OpenCFD软件是当前应用最为广泛的可压缩湍流高分辨率数值模拟软件之一，目前已得到国内外200余家用户使用。获2022年度中国空气动力学会科学技术一等奖（自然科学类），获得陕西省科学技术奖二等奖（2018）三等奖（2013）等奖项。
             </div>
-            <div class="flex-1 pl-5 text-[14px] text-white font-medium">{{ item.text }}</div>
+            <div class="con_r">
+              <img src="../assets/img/introduce_1.png" alt="">
+            </div>
           </div>
-        </div>
-        <div class="soft_r w-[676px] h-[563px]">
-          <img class="w-full" src="../assets/img/soft_r.png" alt="">
         </div>
       </div>
-      <div class="pro_two" :class="{'flex': !isShowArrow.value, 'justify-center': !isShowArrow.value}">
-        <div v-if="isShowArrow.value" @click="handleLeft" class="arrow_l">
-          <div style="width: 48px; height: 48px;" class="arrow_icon_l">
+      <title-wrapper :text1="'FEATURES'" :text2="'功能特色'"></title-wrapper>
+      <div class="mt-[60px] mb-[100px] px-[10%] mx-auto feature_wrapper">
+        <div class="feature_content">
+          <div class="flex">
+            <div class="flex-1 flex flex-col item relative pt-[40px] pl-[80px] pr-[30px] pb-[28px]" v-for="item in featureArr.slice(0, 2)" :key="item.id">
+              <p class="text-[#333] border-box font-semibold text-[16px]">{{ item.text }}</p>
+              <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content }}</p>
+              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px] bg-[red]"></div>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex-1 flex item item_2 flex-col relative pt-[40px] pl-[80px] pr-[30px] pb-[28px]" v-for="item in featureArr.slice(2, 4)" :key="item.id">
+              <p class="text-[#333] border-box font-semibold text-[16px]">{{ item.text }}</p>
+              <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content }}</p>
+              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px] bg-[red]"></div>
+            </div>
           </div>
         </div>
-        <div ref="fa" class="center" :class="{'flex': !isShowArrow.value, 'justify-center': !isShowArrow.value}">
-          <div ref="son" class="over_container" :style="{ transform: transformStyle }">
-            <div ref="contentContainer" style="display: flex;">
-              <div class="content" v-for="item in proArr" :key="item.id">
-                <div class="con_1">{{ item.text_1 }}</div>
-                <div class="con_2">{{ item.text_2 }}</div>
-                <div class="con_3" @click="handleMore">
-                  {{ item.text_3 }}
-                  <img src="../assets/img/sj.svg" alt="">
-                </div>
-                <div class="con_4">{{ item.text_4 }}</div>
-                <div class="con_5">
-                  <img style="" :src="item.img" alt="">
-                </div>
+      </div>
+    </div>
+
+    <div class="cfd_wrapper">
+      <div class="pro_text_l">
+        <div class="text_1">FUNCTIONAL MODULE</div>
+        <div class="text_2">功能模块</div>
+      </div>
+    </div>
+    <div class="cfd_introduce">
+      <div style="display: flex;justify-content: center;">
+        <div class="cfd_content" v-for="item in cfdArr" :key="item.id">
+          <div class="content_l">{{ item.text1 }}</div>
+          <div class="content_r">{{ item.text2 }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="software_wrapper">
+      <div class="pro_text_l">
+        <div class="text_1">APPLICATION CASES</div>
+        <div class="text_2">应用案例</div>
+      </div>
+    </div>
+    <trans-wrapper :arr="softArr"></trans-wrapper>
+<!--    <div class="software_content">
+      <div class="soft_wrap">
+        <div class="soft_item" v-for="item in softArr" :key="item.id">
+          <div class="img_wrap">
+            <img :src="item.img" alt="">
+          </div>
+          <div class="year">{{item.text1}}</div>
+          <div class="detail">{{item.text2}}</div>
+        </div>
+      </div>
+    </div>-->
+
+    <div class="award_wrapper">
+      <div class="pro_text_l">
+        <div class="text_1">HONOR&AWARDS</div>
+        <div class="text_2">获奖情况</div>
+      </div>
+    </div>
+
+    <div class="time_wrapper">
+      <div class="arrow_l">
+        <div @click="handleLeft" class="arrow_dot arrow_dot_l">{{ '<' }}</div>
+      </div>
+      <div ref="fa" class="center">
+        <div class="center_line"></div>
+        <div ref="son" class="over_container" :style="{ transform: transformStyle }">
+          <div style="display: flex;">
+            <div class="time_text" v-for="item in timeArr" :key="item.id">
+              <div class="time_year">
+                <div style="padding: 0 10px;" :class="{'active': item?.active}">{{item.text1}}</div>
+              </div>
+              <div class="line">
+                <div class="dot" :class="{'active': item?.active}"></div>
+              </div>
+              <div class="time_detail">
+                <div style="padding: 0 10px;" :class="{'active': item?.active}">{{item.text2}}</div>
               </div>
             </div>
           </div>
         </div>
-        <div v-if="isShowArrow.value" @click="handleRight" class="arrow_r">
-          <div style="width: 48px; height: 48px;" class="arrow_icon">
-          </div>
-        </div>
       </div>
-    </div>
-    <div class="pro_three">
-      <div class="pro_text_l">
-        <div class="text_1">HONOR&AWARDS</div>
-        <div class="text_2">奖励荣誉</div>
-      </div>
-<!--      <div class="pro_text_r">
-        <div class="text_x">XXXXXXXXXXXXXXXXXXXXXXX</div>
-        <div class="text_x">XXXXXXXXXXXXXXXXXX</div>
-        <div class="text_cn">独立自主  全过程分析  多场耦合  快速高效协同  应用场景广泛</div>
-      </div>-->
-    </div>
-    <div class="pro_four">
-      <div class="honor_wrapper">
-        <div class="honor_text" @click="handleHonor(index)" :class="{active: activeNum === index}" v-for="(item, index) in honorArr" :key="item.id">{{ item.text }}</div>
-      </div>
-      <div class="honor_pic">
-        <div class="pic_l"></div>
-        <div class="pic_r">
-          <div class="pic_r_1"></div>
-          <div class="pic_r_2">
-            <div>XXXXXXXXXXXXXXXXXXXXXX</div>
-            <div>XXXXXXXXXXXXXXXXXXXXXX</div>
-            <div>XXXXXXXXXXXXXXXXXXXXXX</div>
-            <div>XXXXXXXXXXXXXXXXXXXXXX</div>
-          </div>
-        </div>
+      <div class="arrow_r">
+        <div @click="handleRight" class="arrow_dot">{{ '>' }}</div>
       </div>
     </div>
 
-<!--    <div class="pro_five">
-      <div class="pro_text_l">
-        <div class="text_1">HISTORY</div>
-        <div class="text_2">科研进展</div>
+    <div class="honor_details">
+      <div class="honor_pic">
+        <img src="../assets/img/honor_1.png" alt="">
       </div>
-      <div class="pro_text_r">
-        <div class="text_x">XXXXXXXXXXXXXXXXXXXXXXX</div>
-        <div class="text_x">XXXXXXXXXXXXXXXXXX</div>
-        <div class="text_cn">独立自主  全过程分析  多场耦合  快速高效协同  应用场景广泛</div>
+      <div class="honor_content">
+        <div class="honor_year">2022年</div>
+        <div class="honor_award">中国空气动力学会科学技术一等奖(自然科学类)</div>
+        <div class="honor_text">中国空气动力学会是国家一级学会，也是国内唯一一家空气动力学专业的社会团体。学会于1980年由中国科协批准成立，并报原国防科工委批准备案，于1991年7月在民政部登记注册，1997年根据中办、国务院有关文件要求，明确学会挂靠单位是中国空气动力研究与发展中心，业务主管单位是中国科协，等级管理单位是民政部。</div>
       </div>
     </div>
-    <div class="pro_six">
-      <div class="six_content">
-        <div class="six_l">
-          <timeline></timeline>
-        </div>
-        <div class="six_r">
-          <swiper></swiper>
-        </div>
-      </div>
-    </div>-->
-  </div>
-  <div class="block md:hidden">
-    <page1-phone></page1-phone>
   </div>
 </template>
 
 <style scoped lang="scss">
-.soft_item {
-  background: linear-gradient(90deg, #3545BD 0%, #528EE8 100%);
-  border-radius: 4px;
-  &:not(:last-child) {
-    margin-bottom: 60px;
+.feature_wrapper {
+  .feature_content {
+    background: #fff;
+    box-shadow: 0 12px 12px 0 rgba(0,0,0,0.04);
+    border-radius: 5px;
+    .item {
+      &:hover {
+        background: #0055D5;
+        border-radius: 5px;
+        p {
+          color: #fff;
+        }
+        &:after, &:before {
+          z-index: -1;
+        }
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        width: 80%;
+        height: 1px;
+        left: 50%;
+        bottom: 0;
+        background: #e7e7e7;
+        transform: translateX(-50%);
+      }
+    }
+    .item:nth-child(2n-1) {
+      &:before {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 120px;
+        right: 0;
+        top: 50%;
+        background: #e7e7e7;
+        transform: translateY(-50%);
+      }
+    }
+    .item.item_2 {
+      &:after {
+        display: none;
+      }
+    }
   }
 }
-:deep(.el-timeline) {
-  height: 100%;
-  padding-left: 0;
-}
-:deep(.el-timeline-item__content) {
-  color: #999;
-}
-.product-container {
-  width: 100%;
-  //height: 1000px;
-  background: url('../assets/img/product_center_bg.png') no-repeat;
-  //background-size: 100% 100%;
-  background-size: cover;
-  padding-top: 140px;
-  //padding-bottom: 180px;
-}
-.pro_software {
-  padding: 0 10%;
-}
-.pro_one {
-  padding: 0 20%;
-  box-sizing: border-box;
-  height: 90px;
-  margin: 0 auto;
+.honor_details {
+  margin: 0 20% 120px 20%;
   display: flex;
-  .pro_text_l {
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  padding: 20px;
+  box-shadow: 0 0 20px 0 rgba(35,35,35,0.06);
+  box-sizing: border-box;
+  .honor_pic {
+    width: 268px;
+    height: 178px;
+    font-size: 0;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .honor_content {
     flex: 1;
-    position: relative;
-    //border-right: 1px solid #D8D8D8;
-    .text_1 {
-      position: absolute;
-      z-index: -2;
-      top: 0;
-      font-size: 30px;
-      color: #E0E0E0;
-    }
-    .text_2 {
-      font-size: 36px;
-      color: #333333;
-      width: 144px;
-      height: 74px;
-      line-height: 74px;
-      border-bottom: 4px solid #0055D5;
-      text-align: center;
-    }
-  }
-  .pro_text_r {
-    flex: 1.2;
-    padding-left: 20px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    .text_x {
-      font-size: 18px;
-      color: #999999;
-    }
-    .text_cn {
-      font-size: 18px;
-      color: #313131;
+    margin-left: 40px;
+    height: 100%;
+    .honor_year {
       margin-top: 10px;
+      padding: 5px 0 5px 0;
+      height: 30px;
+      line-height: 30px;
+      font-size: 18px;
+      color: #000;
+      position: relative;
+      &:after {
+        content: '';
+        position: absolute;
+        width: 35px;
+        height: 4px;
+        background: #0055D5;
+        top: 0;
+        left: 0;
+      }
+    }
+    .honor_award {
+      height: 30px;
+      padding: 0 0 5px 0;
+      line-height: 30px;
+      font-size: 18px;
+      color: #000;
+    }
+    .honor_text {
+      font-size: 16px;
+      color: #999;
     }
   }
 }
-.pro_two {
-  width: 100%;
-  padding: 160px 45px 160px 45px;
-  box-sizing: border-box;
-  overflow: hidden;
+.time_wrapper {
+  margin: 120px 20% 50px 20%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
   .center {
-    width: calc(100% - 96px);
+    position: relative;
     overflow-x: scroll;
     &::-webkit-scrollbar {
       display: none;
     }
-    .over_container {
-      //display: flex;
-      display: inline-block;
-    }
-    .content {
-      width: 380px;
-      text-align: center;
-      height: 550px;
-      padding: 20px;
-      box-sizing: border-box;
-      background: #FFFFFF;
-      z-index: 2;
-      box-shadow: 0 0 6px 0 rgba(35,35,35,0.06);
-      margin-top: 10px;
-      &:not(:last-child) {
-        margin-right: 20px;
-      }
-      .con_1 {
-        font-size: 14px;
-        color: #999999;
-      }
-      .con_2 {
-        font-size: 22px;
-        color: #232323;
-        margin-top: 15px;
-        margin-bottom: 35px;
-      }
-      .con_3 {
-        cursor: pointer;
-        color: #0055D5;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: center;
-        img {
-          margin-left: 10px;
-        }
-      }
-      .con_4 {
-        font-size: 14px;
-        color: #232323;
-        margin-bottom: 25px;
-        text-align: left;
-        line-height: 28px;
-      }
-      .con_5 {
-
+  }
+  .center_line {
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    background: #ccc;
+    top: 50px;
+  }
+  .line {
+    //width: 100%;
+    //height: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //background: #ccc;
+    .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #ccc;
+      &.active {
+        border: 1px solid #0055D5;
       }
     }
   }
   .arrow_l, .arrow_r {
-    cursor: pointer;
-    width: 48px;
-    height: 550px;
-    display: flex;
-    align-items: center;
-    color: #000;
-    font-size: 26px;
-  }
-  .arrow_icon {
-    background: url("../assets/img/arrow_r.svg") no-repeat;
-    background-size: cover;
-    &:hover {
-      background: url("../assets/img/arrow_r_active.svg") no-repeat;
-      background-size: cover;
+    width: 50px;
+    height: 120px;
+    //background: firebrick;
+    .arrow_dot {
+      cursor: pointer;
+      margin-top: 40px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      line-height: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #ccc;
+      background: #fff;
+      border: 1px solid #ccc;
     }
   }
-  .arrow_icon_l {
-    background: url("../assets/img/arrow_l.svg") no-repeat;
-    background-size: cover;
-    &:hover {
-      background: url("../assets/img/arrow_l_active.svg") no-repeat;
-      background-size: cover;
+  .arrow_l {
+    display: flex;
+    justify-content: right;
+  }
+  .over_container {
+    display: inline-block;
+  }
+  .time_text {
+    width: 180px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    //background: yellow;
+    .time_year {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 49px;
+      padding-bottom: 10px;
+      box-sizing: border-box;
+      .active {
+        color: #0055D5;
+      }
+    }
+    .time_detail {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 69px;
+      padding-top: 10px;
+      box-sizing: border-box;
+      .active {
+        color: #0055D5;
+      }
     }
   }
 }
-.pro_three, .pro_five {
+/*.software_content {
+  margin: 120px 0;
+  padding: 0 10%;
+  box-sizing: border-box;
+  .soft_wrap {
+    display: flex;
+    justify-content: center;
+    .soft_item {
+      //flex: 1;
+      width: 362px;
+      &:not(:last-child) {
+        margin-right: 120px;
+      }
+    }
+    .img_wrap {
+      font-size: 0;
+      border: 1px dashed #ccc;
+    }
+    .year {
+      font-size: 18px;
+      color: #343434;
+      margin: 24px 0;
+    }
+    .detail {
+      font-size: 24px;
+      color: #181818;
+    }
+  }
+}*/
+.cfd_introduce {
+  margin: 120px 0 0 0;
+  padding: 0 10% 180px 10%;
+  .cfd_content {
+    width: 320px;
+    height: 242px;
+    padding: 25px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: 0 0 20px 0 rgba(35,35,35,0.06);
+    display: flex;
+    flex-direction: column;
+    &:hover {
+      background: #0055D5;
+    }
+    &:hover .content_l {
+      color: #fff;
+    }
+    &:hover .content_r {
+      color: #fff;
+    }
+    &:not(:last-child) {
+      margin-right: 40px;
+    }
+    .content_l {
+      text-align: center;
+      color: #181818;
+      font-size: 18px;
+    }
+    .content_r {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #999999;
+    }
+  }
+}
+.cfd_wrapper, .software_wrapper, .award_wrapper {
   padding: 0 15%;
   box-sizing: border-box;
   height: 90px;
-  margin: 20px auto 0;
+  margin: 0 auto;
   display: flex;
   .pro_text_l {
     flex: 1;
@@ -445,14 +478,23 @@ onMounted(() => {
     }
     .text_2 {
       font-size: 36px;
-      position: absolute;
+      position: relative;
       z-index: 2;
       color: #333333;
-      width: 144px;
+      width: 320px;
       height: 74px;
       line-height: 74px;
-      border-bottom: 4px solid #0055D5;
+      //border-bottom: 4px solid #0055D5;
       text-align: center;
+      &:after {
+        content: '';
+        position: absolute;
+        width: 144px;
+        height: 4px;
+        background: #0055D5;
+        left: 0;
+        bottom: 0;
+      }
     }
   }
   .pro_text_r {
@@ -472,168 +514,70 @@ onMounted(() => {
     }
   }
 }
-.pro_four {
-  margin-top: 20px;
-  padding: 150px 10%;
-  height: 700px;
-  box-sizing: border-box;
-  background: url('../assets/img/develop_bg.png') no-repeat;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  .honor_wrapper {
-    display: flex;
-    flex-direction: column;
-    //margin-top: 50px;
-    .honor_text {
-      cursor: pointer;
-      margin-bottom: 50px;
-      color: #1A2B50;
-      font-size: 20px;
-      &.active {
-        color: #2E5CEE;
-      }
-    }
-  }
-  .honor_pic {
-    width: 800px;
-    margin-left: 90px;
-    height: 400px;
-    position: relative;
-    border-radius: 6px;
-  }
-  .pic_l {
-    width: 500px;
-    height: 350px;
-    z-index: 3;
-    background: url("../assets/img/honor_1.png") no-repeat;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .pic_r {
-    z-index: 2;
-    width: 600px;
-    height: 360px;
-    background: linear-gradient(207deg, #627DD3 0%, #0A2349 100%);
-    border-radius: 6px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    .pic_r_1 {
-      width: 40%;
-    }
-    .pic_r_2 {
-      width: 60%;
-      padding: 90px 15px 90px 82px;
-      box-sizing: border-box;
-      white-space: nowrap;
-      div {
-        margin-bottom: 15px;
-        color: #fff;
-      }
-    }
-    .pic_r_1, .pic_r_2 {
-
+.software_wrapper, .award_wrapper, .cfd_wrapper {
+  .pro_text_l {
+    border-right: unset;
+    .text_2 {
+      text-align: left;
     }
   }
 }
-.pro_six {
-  background: #F7F7F8;
-  padding: 150px 15%;
-  .six_l {
-    height: 100%;
-  }
-  .six_r {
-    flex: 1;
-    //padding-left: 400px;
-    padding-left: 25%;
-    box-sizing: border-box;
-    height: 100%;
-  }
-  .six_content {
-    height: 420px;
-    //background: red;
-    display: flex;
-    //padding: 0 30px;
-    box-sizing: border-box;
-  }
-
-}
-.pro_five {
-  padding-top: 100px;
-  background: #F7F7F8;
-  box-sizing: unset;
-}
-.choose_us {
+.introduce {
+  position: relative;
   width: 100%;
-  display: flex;
-  height: 200px;
-  .us_l {
-    flex: 1;
-    font-size: 26px;
-    color: #fff;
-    padding-right: 150px;
+  background: url("../assets/img/cfd_bg.svg") no-repeat;
+  background-size: cover;
+  .introduce_center {
+    width: 70%;
+    position: absolute;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.12);
+    left: 50%;
+    transform: translateX(-50%);
+    top: -40%;
+    padding: 30px 80px;
     box-sizing: border-box;
-    background: #2B2C2E;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    font-weight: 400;
+    //height: 400px;
+    background: #fff;
   }
-  .us_r {
-    flex: 2;
+  .top_text {
+    position: relative;
+    .text_1 {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      font-size: 30px;
+      color: #E0E0E0;
+    }
+    .text_2 {
+      font-size: 36px;
+      position: absolute;
+      z-index: 2;
+      color: #333333;
+      width: 260px;
+      height: 74px;
+      line-height: 74px;
+      text-align: left;
+    }
+  }
+  .content {
+    margin-top: 70px;
     display: flex;
-    padding-right: 140px;
-    padding-left: 20px;
-    background: #0055D5;
-    .tip {
+    .con_l {
       flex: 1;
+      font-weight: 400;
+      color: #000000;
+      line-height: 34px;
+      font-size: 18px;
+    }
+    .con_r {
+      width: 180px;
+      height: 180px;
+      margin-left: 70px;
+      border: 1px dashed #ccc;
       display: flex;
       justify-content: center;
-      align-items:center;
-      flex-direction: column;
+      align-items: center;
     }
-    .tip_text {
-      font-size: 20px;
-      color: #fff;
-    }
-  }
-}
-.learn_more {
-  position: absolute;
-  bottom: 110px;
-  left: 50%;
-  cursor: pointer;
-  transform: translateX(-50%);
-  width: 200px;
-  height: 60px;
-  font-size: 28px;
-  background: #F51D00;
-  border-radius: 37px;
-  color: #fff;
-  //display: flex;
-  //justify-content: center;
-  //align-items: center;
-  .more_arrow {
-    margin-left: 10px;
-  }
-  @keyframes jumping {
-    0% { transform: translateX(0); }
-    50% { transform: translateX(5px); }
-    100% { transform: translateY(0); }
-  }
-  .jump_wrapper {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: jumping 0.8s infinite;
   }
 }
 .pc_container {
@@ -641,61 +585,16 @@ onMounted(() => {
   .banner-wrapper {
     position: relative;
   }
-  /*.logo_btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    height: 120px;
-    .logo_btn1 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 120px;
-      font-size: 45px;
-      padding-left: 60px;
-      font-family: yixinchongfenghao, sans-serif;
-      color: #7E7E7E;
-      img {
-        height: 80px;
-        width: 220px;
-      }
+  .banner_text_2 {
+    position: absolute;
+    width: 80%;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    img {
+      width: 100%;
     }
-    .btn {
-      flex: 1;
-      width: 180px;
-      height: 120px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(255,255,255,0.6);
-      position: relative;
-      cursor: pointer;
-      &:hover {
-        background: #5B95F8;
-        color: #fff;
-      }
-      &:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        width: 1px;
-        height: 120px;
-        background: #E0E0E0;
-        top: 0;
-        right: 0;
-      }
-      &:first-child::before {
-        content: '';
-        position: absolute;
-        width: 1px;
-        height: 120px;
-        background: #E0E0E0;
-        top: 0;
-        left: 0;
-      }
-    }
-  }*/
+  }
   .banner_text {
     position: absolute;
     width: 761px;

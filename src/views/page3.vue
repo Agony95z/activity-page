@@ -3,66 +3,37 @@ import { computed, onMounted, ref } from "vue";
 import Header from '@/components/Header.vue';
 import TitleWrapper from "@/components/TitleWrapper.vue";
 import TransWrapper from "@/components/TransWrapper.vue";
-import soft_1 from '@/assets/img/cdem_soft_1.png';
-import soft_2 from '@/assets/img/cdem_soft_2.png';
-import soft_3 from '@/assets/img/cdem_soft_3.png';
-import soft_4 from '@/assets/img/cdem_soft_4.png';
+import soft_1 from '@/assets/img/mech_soft_1.png';
+import soft_2 from '@/assets/img/mech_soft_2.png';
+import soft_3 from '@/assets/img/mech_soft_3.png';
+import soft_4 from '@/assets/img/mech_soft_4.png';
 
 
 const cfdArr = [
-  {id: 1, text1: '块体模块', text2: '有限元与块体离散元的深度融合，能模拟静、动载荷下地质体及人工材料弹性、塑性、损伤、断裂、破碎、运动、堆积的全过程模拟；通过块体边界及块体内部的断裂实现固体材料渐进破坏过程的模拟，支持渗流（裂隙/孔隙）、温度、应力、破裂等的交互耦合；内置锚杆、锚索、桩、连接杆、耦合面等多种结构单元；内置21种单元本构，12种接触本构。采用脚本语言进行求解控制，内置接口函数500余条，可对计算过程进行精确控制。'},
-  {id: 2, text1: '粒子模块', text2: '以颗粒离散元算法为主，包含PCMM、MPM、PFLY等众多广义粒子算法。借助颗粒离散元算法可分析地质体的损伤破裂过程及松散介质的运动堆积过程，借助无网格算法可准确模拟连续介质的大变形过程，借助PFLY算法可分析破片群的高速飞散及对目标的打击过程。该模块采用脚本语言进行求解控制，支持与块体模块的无缝对接，实现块体与颗粒的耦合计算，同时支持块体向颗粒的转化。'},
+  {id: 1, text1: 'xScale', text2: 'SiMech xScale是为SiMech计算模块开发的前端集成软件，它拥有跨平台的用户操作界面，可为其它后端多尺度计算模块提供相应的前处理、任务提交和结果文件显示功能。', img: ''},
+  {id: 2, text1: 'Feat', text2: 'SiMech Feat是结构有限元计算模块，支持多种单元、线性/非线性、静力学/动力学、模态、接触、耦合约束等功能，可直接导入INP文件，并集成多种高性能求解器。', img: ''},
+  {id: 3, text1: 'Fatigue', text2: 'SiMech Fatigue是结构疲劳计算模块，支持多种模型数据输入、结点分组计算、单元分组、外表面识别，载荷载荷历程、应力文件组合、关联、编辑、插值，不同疲劳应力模型等功能。', img: ''},
+  {id: 4, text1: 'Hymacs', text2: 'SiMech Hymacs是分子/准连继耦合跨尺度计算模块，用于针对微观材料开展跨尺度计算分析，它是基于耦合分子/集团统计热力学跨尺度计算理论框架，开发的并行计算程序，目前主要用于基础研究。', img: ''},
+  {id: 5, text1: 'pyFEM', text2: 'pyFEM是一个完全基于python语言实现的极简有限元求解器。主要用于有限元方法的学习、有限元算法验证和快速建立材料本构模型的程序原型。', img: ''},
+  {id: 6, text1: '', text2: '', img: ''},
 ];
 const softArr = [
-  {id:1, text: '边坡失稳破坏过程模拟', img: soft_1},
-  {id:2, text: '地质灾害对人居环境影响过程模拟', img: soft_2},
-  {id:3, text: '露天矿三维台阶爆破过程模拟', img: soft_3},
-  {id:4, text: '圆柱体爆破漏斗模拟', img: soft_4},
+  {id:1, text: '高速列车整车结构应力和寿命分析', img: soft_1},
+  {id:2, text: '高速列车关键构件的应力分析和寿命优化', img: soft_2},
+  {id:3, text: '盾构刀盘结构服役工作的变形分析', img: soft_3},
+  {id:4, text: '超高速电磁驱动结构的变形分析和优化设计', img: soft_4},
 ];
 
-const timeArr = [
-  {id: 1, text1: '2013', text2: '基于采选系统能耗优化的爆破关键技术研究与实践'},
-  {id: 2, text1: '2015', text2: '露天铁矿矿石破磨成本优化与工程示范'},
-  {id: 3, text1: '2018', text2: '山地红层区域工程灾变防控关键技术研发与应用'},
-  {id: 4, text1: '2019', text2: '连续介质力学框架的岩体非连续计算理论'},
-  {id: 5, text1: '2022', text2: '高陡边坡地震稳定性分析与支挡工程抗震设计关键技术',},
-  {id: 6, text1: '2023', text2: '地质体连续-非连续数值分析方法CDEM', active: true},
-];
 const featureArr = [
-  {id:1, text: '独立自主', content: '从底层开发，完全独立自主知识产权', img: ''},
-  {id:2, text: '全过程分析', content: '可模拟爆炸、动载、地震、开挖、静载等作用下固体材料的弹性、塑性、损伤、破裂，以及破碎后材料的碰撞、飞散、堆积全过程', img: ''},
-  {id:3, text: '多场耦合', content: '支持应力、温度、渗流、破裂等多场的交互耦合', img: ''},
-  {id:4, text: '快速高效协同', content: '采用CPU/GPU异构并行加速，计算效率是同类软件的20倍以上', img: ''},
-  {id:5, text: '应用场景广泛', content: '岩土、爆炸冲击、采矿、隧道、油气、水利、地质、结构、机械等多个领域', img: ''},
-  {id:6, text: '', content: '', img: ''},
+  {id:1, text: '多尺度力学基础框架', content: '构建了工程材料和结构的多尺度力学计算基础框架，由前处理、后处理、计算模块三大部分组成', img: ''},
+  {id:2, text: '计算模块集成', content: '包含结构有限元分析、结构疲劳寿命分析、微观分子模拟、分子/有限元耦合分析等计算模块', img: ''},
+  {id:3, text: '工程应用和基础研究结合', content: '既可应用于工程材料和结构的力学性能分析，也可用于基础力学机理和算法研究', img: ''},
+  {id:4, text: '灵活的可扩展性', content: '可针对具体行业需求进行定制化开发，也可通过面向对象开发进行功能扩展', img: ''},
 ];
-const offserX = ref(0);
-const transformStyle = computed({
-  get() {
-    return `translateX(${offserX.value}px)`;
-  },
-  set(value) {
-  }
-});
-const stepL = ref(-30);
-const stepR = ref(30);
-const fa = ref(null);
-const son = ref(null);
 const container = ref(null);
-const timeTextRef = ref(null);
-const handleLeft = () => {
-  if (offserX.value >= 0) return
-  offserX.value = offserX.value + stepR.value
-};
-const handleRight = () => {
-  const isOverFlow = fa?.value?.clientWidth + Math.abs(offserX.value) > son?.value?.clientWidth
-  if (isOverFlow) return
-  offserX.value = offserX.value + stepL.value
-};
 
 onMounted(() => {
   container.value.scrollTop = 0;
-  offserX.value = fa.value.clientWidth - son.value.clientWidth;
 });
 </script>
 
@@ -71,64 +42,83 @@ onMounted(() => {
     <Header />
     <div class="banner-wrapper">
       <div class="banner">
-        <img src="../assets/img/cdem_banner.png" alt="">
+        <img src="../assets/img/banner_2.png" alt="">
       </div>
       <div class="banner_text">
         <img src="../assets/img/banner_2_text.svg" alt="">
       </div>
       <div class="banner_text_2">
-        <img src="../assets/img/cdem.svg" alt="">
+        <img src="../assets/img/cado.svg" alt="">
       </div>
     </div>
     <div class="introduce">
       <div style="position: relative; height: 370px;">
         <div class="introduce_center">
           <div class="top_text">
-            <div class="text_1">About CDEM</div>
-            <div class="text_2">CDEM简介</div>
+            <div class="text_1">About CADO</div>
+            <div class="text_2">CADO简介</div>
           </div>
           <div class="content">
             <div class="con_l">
-              该软件由中国科学院力学研究所历时25年自主研发，基于广义拉格朗日方程理论框架，将连续介质数值方法与非连续介质数值方法进行深度融合，在能量层面实现了有限元、离散元及无网格算法的统一，可实现静动载荷下地质体及人工材料渐进破坏过程的模拟。借助该软件，能模拟流-固-热多场耦合下固体材料的弹性、塑性、损伤、破裂、破碎、运动、碰撞、流动及堆积全过程。
+              CADO软件是一款用于飞行器气动弹性数值仿真和优化设计的综合性软件。集成了高精度气动计算方法及气动弹性耦合仿真方法，并发展了考虑气弹耦合效应的基于代理模型的多学科耦合综合优化设计方法。可为新一代宽体客机的性能预测提供基础计算支持，为现阶段的飞机型号研制提供新的设计思路，为将来新型布局飞机的研究提供技术支持。CADO已经完成大量工程实际问题的数值仿真工作，相关工程型号任务多达十多项。其中国产C919飞机的静气弹型架外形修正和中俄联合研制的CR929项目静气动弹性相关研究工作，为本软件在民用领域的典型运用。该软件获得国防科学技术奖三等奖。
             </div>
             <div class="con_r">
-              <img src="../assets/img/cdem_introduce_1.png" alt="">
+              <img src="../assets/img/mech_introduce_1.png" alt="">
             </div>
           </div>
         </div>
       </div>
       <title-wrapper :text1="'FEATURES'" :text2="'功能特色'"></title-wrapper>
       <div class="mt-[60px] mb-[100px] px-[10%] mx-auto feature_wrapper">
-        <div class="feature_content">
-          <div class="flex">
-            <div class="flex-1 flex flex-col item relative pt-[40px] pl-[80px] pr-[30px] pb-[28px]" v-for="item in featureArr.slice(0, 3)" :key="item.id">
-              <p class="text-[#333] border-box font-semibold text-[16px]">{{ item.text }}</p>
-              <p class="text-[#666] pr-[30px] border-box text-[14px] mt-2.5">{{ item.content }}</p>
-              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px] bg-[red]"></div>
+        <div class="feature_container flex">
+          <div class="feature_content">
+            <div class="flex">
+              <div class="flex-1 flex flex-col item relative pt-[30px] pl-[30px] pr-[25px] pb-[25px]" v-for="item in featureArr.slice(0, 2)" :key="item.id">
+                <p class="text-[#333] border-box font-semibold text-[16px]">{{ item.text }}</p>
+                <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content }}</p>
+                <!--              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px] bg-[red]"></div>-->
+              </div>
+            </div>
+            <div class="flex">
+              <div class="flex-1 flex item item_2 flex-col relative pt-[30px] pl-[30px] pr-[25px] pb-[25px]" v-for="item in featureArr.slice(2, 4)" :key="item.id">
+                <p class="text-[#333] border-box font-semibold text-[16px]">{{ item.text }}</p>
+                <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content }}</p>
+                <!--              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px] bg-[red]"></div>-->
+              </div>
             </div>
           </div>
-          <div class="flex">
-            <div class="flex-1 flex item item_2 flex-col relative pt-[40px] pl-[80px] pr-[30px] pb-[28px]" :class="{'empty': item.id === 6}" v-for="item in featureArr.slice(3, 6)" :key="item.id">
-              <p class="text-[#333] border-box font-semibold text-[16px]">{{ item.text }}</p>
-              <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content }}</p>
-              <div v-if="item.id !== 6" class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px] bg-[red]"></div>
-            </div>
+          <div class="flex-1 feature_right flex flex-col pt-[30px] pl-[30px] pr-[25px] pb-[25px]">
+            <div class="text-[#333] border-box font-semibold text-[16px]">多场耦合</div>
+            <div class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">发展了基于多套重叠背景网格动网格方法，RBF动网格方法的网格变形技术。除常规线性结构颤振分析外，还实现了考虑结构几何非线性和间隙非线性的非线性颤振分析。为探究某些特殊颤振现象产生的物理机理提供技术支持，为某些飞行器结构动强度设计提供数据参考。</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="cfd_wrapper">
+<!--    <div class="cfd_wrapper">
       <div class="pro_text_l">
         <div class="text_1">FUNCTIONAL MODULE</div>
         <div class="text_2">功能模块</div>
       </div>
-    </div>
+    </div>-->
+    <title-wrapper :text1="'FUNCTIONAL MODULE'" :text2="'功能模块'"></title-wrapper>
     <div class="cfd_introduce">
-      <div style="display: flex;justify-content: center;">
-        <div class="cfd_content" v-for="item in cfdArr" :key="item.id">
+      <div class="flex justify-center">
+        <div class="cfd_content relative" v-for="item in cfdArr.slice(0, 3)" :key="item.id">
           <div class="content_l">{{ item.text1 }}</div>
           <div class="content_r">{{ item.text2 }}</div>
+          <div class="w-full h-[90px]">
+            <div class="w-[200px] h-[90px] bg-red-100 absolute bottom-[0] right-[0]"></div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-[30px] flex justify-center">
+        <div class="cfd_content relative" :class="{'isSix': item.id === 6}" v-for="item in cfdArr.slice(3, 6)" :key="item.id">
+          <div class="content_l">{{ item.text1 }}</div>
+          <div class="content_r">{{ item.text2 }}</div>
+          <div class="w-full h-[90px]">
+            <div class="w-[200px] h-[90px] bg-red-100 absolute bottom-[0] right-[0]"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -140,67 +130,41 @@ onMounted(() => {
       </div>
     </div>
     <trans-wrapper :arr="softArr"></trans-wrapper>
-
-    <div class="award_wrapper">
-      <div class="pro_text_l">
-        <div class="text_1">HONOR&AWARDS</div>
-        <div class="text_2">获奖情况</div>
-      </div>
-    </div>
-
-    <div class="time_wrapper">
-      <div class="arrow_l">
-        <div @click="handleLeft" class="arrow_dot arrow_dot_l">{{ '<' }}</div>
-      </div>
-      <div ref="fa" class="center">
-        <div class="center_line"></div>
-        <div ref="son" class="over_container" :style="{ transform: transformStyle }">
-          <div style="display: flex;">
-            <div class="time_text" v-for="item in timeArr" :key="item.id">
-              <div class="time_year">
-                <div class="text-[14px]" style="padding: 0 10px;" :class="{'active': item?.active}">{{item.text1}}</div>
-              </div>
-              <div class="line">
-                <div class="dot" :class="{'active': item?.active}"></div>
-              </div>
-              <div class="time_detail">
-                <div class="text-[14px]" style="padding: 0 10px;" :class="{'active': item?.active}">{{item.text2}}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="arrow_r">
-        <div @click="handleRight" class="arrow_dot">{{ '>' }}</div>
-      </div>
-    </div>
-
-    <div class="honor_details">
-      <div class="honor_pic">
-        <img src="../assets/img/cdem_honor_1.png" alt="">
-      </div>
-      <div class="honor_content">
-        <div class="honor_year">2023年</div>
-        <div class="honor_award">地质体连续-非连续数值分析方法CDEM</div>
-        <div class="type_1 mt-5">
-          <div class="text-[18px] text-[#999]">类种</div>
-          <div class="text-[18px] text-[#232323]">地质工程技术创新成果</div>
-        </div>
-        <div class="type_1 mt-5">
-          <div class="text-[18px] text-[#999]">发证单位</div>
-          <div class="text-[18px] text-[#232323]">中国岩石力学与工程学会</div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .feature_wrapper {
-  .feature_content {
+  .feature_container {
     background: #fff;
     box-shadow: 0 12px 12px 0 rgba(0,0,0,0.04);
     border-radius: 5px;
+    .feature_right {
+      position: relative;
+      &:hover {
+        background: #0055D5;
+        border-radius: 5px;
+        div {
+          color: #fff;
+        }
+        &:after, &:before {
+          z-index: -1;
+        }
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 70%;
+        background: #e7e7e7;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  .feature_content {
+    flex: 2;
     .item {
       &:hover {
         background: #0055D5;
@@ -239,9 +203,6 @@ onMounted(() => {
       &:after {
         display: none;
       }
-      &.empty:hover {
-        background: none;
-      }
     }
   }
 }
@@ -250,7 +211,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  //height: 240px;
+  height: 240px;
   padding: 20px;
   box-shadow: 0 0 20px 0 rgba(35,35,35,0.06);
   box-sizing: border-box;
@@ -321,9 +282,12 @@ onMounted(() => {
     top: 50px;
   }
   .line {
+    //width: 100%;
+    //height: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
+    //background: #ccc;
     .dot {
       width: 16px;
       height: 16px;
@@ -338,6 +302,7 @@ onMounted(() => {
   .arrow_l, .arrow_r {
     width: 50px;
     height: 120px;
+    //background: firebrick;
     .arrow_dot {
       cursor: pointer;
       margin-top: 40px;
@@ -360,11 +325,12 @@ onMounted(() => {
     display: inline-block;
   }
   .time_text {
-    width: 190px;
+    width: 180px;
     height: 120px;
     display: flex;
     flex-direction: column;
     text-align: center;
+    //background: yellow;
     .time_year {
       display: flex;
       justify-content: center;
@@ -391,16 +357,19 @@ onMounted(() => {
 }
 .cfd_introduce {
   margin: 120px 0 0 0;
-  padding: 0 15% 120px 15%;
+  padding: 0 10% 180px 10%;
   .cfd_content {
-    flex: 1;
-    padding: 30px;
+    width: 380px;
+    padding: 25px;
     box-sizing: border-box;
     background: #FFFFFF;
     box-shadow: 0 0 20px 0 rgba(35,35,35,0.06);
     display: flex;
     flex-direction: column;
-    &:hover {
+    &.isSix {
+      opacity: 0;
+    }
+    /*&:hover {
       background: #0055D5;
     }
     &:hover .content_l {
@@ -408,9 +377,9 @@ onMounted(() => {
     }
     &:hover .content_r {
       color: #fff;
-    }
+    }*/
     &:not(:last-child) {
-      margin-right: 40px;
+      margin-right: 20px;
     }
     .content_l {
       text-align: left;
@@ -419,7 +388,7 @@ onMounted(() => {
       font-weight: 600;
     }
     .content_r {
-      margin-top: 20px;
+      margin-top: 14px;
       font-size: 14px;
       color: #999999;
     }
@@ -538,8 +507,8 @@ onMounted(() => {
     .con_r {
       width: 180px;
       height: 180px;
-      border: 1px dashed #ccc;
       margin-left: 70px;
+      border: 1px dashed #ccc;
       display: flex;
       justify-content: center;
       align-items: center;
