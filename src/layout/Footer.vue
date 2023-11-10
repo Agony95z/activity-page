@@ -28,7 +28,9 @@
       </div>
     </div>
   </div>
-  <div class="block md:hidden">12312</div>
+  <div class="block md:hidden text-[#E0E0E0] text-[12px] font-medium text-center py-2.5">
+    版权信息@XXXXXXXXXXXXXXXX
+  </div>
 </template>
 
 <style scoped lang="scss">

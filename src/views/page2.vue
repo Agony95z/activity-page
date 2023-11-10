@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import Header from '@/components/Header.vue';
+import TitleWrapper from "../components/TitleWrapper.vue";
 import soft_1 from '@/assets/img/soft_1.png';
 import soft_2 from '@/assets/img/soft_2.png';
 import soft_3 from '@/assets/img/soft_3.png';
@@ -25,6 +26,12 @@ const timeArr = [
   {id: 4, text1: '2019', text2: '中国科学院信息化优秀案例'},
   {id: 5, text1: '2020', text2: '国家超算广州中心“天河之星”优秀应用奖'},
   {id: 6, text1: '2022', text2: '中国空气动力学科学技术一等奖(自然科学类)', active: true},
+];
+const featureArr = [
+  {id:1, text: '多尺度力学基础框架', content: '构建了工程材料和结构的多尺度力学计算基础框架，由前处理、后处理、计算模块三大部分组成', img: ''},
+  {id:2, text: '计算模块集成', content: '包含结构有限元分析、结构疲劳寿命分析、微观分子模拟、分子/有限元耦合分析等计算模块', img: ''},
+  {id:3, text: '工程应用和基础研究结合', content: '既可应用于工程材料和结构的力学性能分析，也可用于基础力学机理和算法研究', img: ''},
+  {id:4, text: '灵活的可扩展性', content: '可针对具体行业需求进行定制化开发，也可通过面向对象开发进行功能扩展', img: ''},
 ];
 const offserX = ref(-240);
 const transformStyle = computed({
@@ -86,24 +93,38 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="cfd_wrapper">
-        <div class="pro_text_l">
-          <div class="text_1">Functional Module</div>
-          <div class="text_2">功能模块</div>
-        </div>
-<!--        <div class="pro_text_r">
-          <div class="text_x">XXXXXXXXXXXXXXXXXXXXXXX</div>
-          <div class="text_x">XXXXXXXXXXXXXXXXXX</div>
-          <div class="text_cn">独立自主  全过程分析  多场耦合  快速高效协同  应用场景广泛</div>
-        </div>-->
-      </div>
-
-      <div class="cfd_introduce">
-        <div style="display: flex;justify-content: center;">
-          <div class="cfd_content" v-for="item in cfdArr" :key="item.id">
-            <div class="content_l">{{ item.text1 }}</div>
-            <div class="content_r">{{ item.text2 }}</div>
+      <title-wrapper :text1="'FEATURES'" :text2="'功能特色'"></title-wrapper>
+      <div class="mt-[60px] mb-[100px] px-[10%] mx-auto feature_wrapper">
+        <div class="feature_content">
+          <div class="flex">
+            <div class="flex-1 flex flex-col item relative pt-[40px] pl-[80px] pr-[30px] pb-[28px]" v-for="item in featureArr.slice(0, 2)" :key="item.id">
+              <p class="text-[#333] border-box font-semibold text-[16px]">{{ item.text }}</p>
+              <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content }}</p>
+              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px] bg-[red]"></div>
+            </div>
           </div>
+          <div class="flex">
+            <div class="flex-1 flex item item_2 flex-col relative pt-[40px] pl-[80px] pr-[30px] pb-[28px]" v-for="item in featureArr.slice(2, 4)" :key="item.id">
+              <p class="text-[#333] border-box font-semibold text-[16px]">{{ item.text }}</p>
+              <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content }}</p>
+              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px] bg-[red]"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cfd_wrapper">
+      <div class="pro_text_l">
+        <div class="text_1">FUNCTIONAL MODULE</div>
+        <div class="text_2">功能模块</div>
+      </div>
+    </div>
+    <div class="cfd_introduce">
+      <div style="display: flex;justify-content: center;">
+        <div class="cfd_content" v-for="item in cfdArr" :key="item.id">
+          <div class="content_l">{{ item.text1 }}</div>
+          <div class="content_r">{{ item.text2 }}</div>
         </div>
       </div>
     </div>
@@ -113,11 +134,6 @@ onMounted(() => {
         <div class="text_1">Applications</div>
         <div class="text_2">应用案例</div>
       </div>
-<!--      <div class="pro_text_r">-->
-<!--        <div class="text_x">XXXXXXXXXXXXXXXXXXXXXXX</div>-->
-<!--        <div class="text_x">XXXXXXXXXXXXXXXXXX</div>-->
-<!--        <div class="text_cn">独立自主  全过程分析  多场耦合  快速高效协同  应用场景广泛</div>-->
-<!--      </div>-->
     </div>
 
     <div class="software_content">
@@ -180,6 +196,52 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+.feature_wrapper {
+  .feature_content {
+    background: #fff;
+    box-shadow: 0 12px 12px 0 rgba(0,0,0,0.04);
+    border-radius: 5px;
+    .item {
+      &:hover {
+        background: #0055D5;
+        border-radius: 5px;
+        p {
+          color: #fff;
+        }
+        &:after, &:before {
+          z-index: -1;
+        }
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        width: 80%;
+        height: 1px;
+        left: 50%;
+        bottom: 0;
+        background: #e7e7e7;
+        transform: translateX(-50%);
+      }
+    }
+    .item:nth-child(2n-1) {
+      &:before {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 120px;
+        right: 0;
+        top: 50%;
+        background: #e7e7e7;
+        transform: translateY(-50%);
+      }
+    }
+    .item.item_2 {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
 .honor_details {
   margin: 0 20% 120px 20%;
   display: flex;
@@ -471,7 +533,7 @@ onMounted(() => {
     top: -40%;
     padding: 30px 80px;
     box-sizing: border-box;
-    height: 400px;
+    //height: 400px;
     background: #fff;
   }
   .top_text {

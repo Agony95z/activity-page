@@ -21,5 +21,6 @@ declare module 'vue' {
     SwiperPhone: typeof import('./src/components/SwiperPhone.vue')['default']
     TabsPhone: typeof import('./src/components/TabsPhone.vue')['default']
     Timeline: typeof import('./src/components/timeline.vue')['default']
+    TitleWrapper: typeof import('./src/components/TitleWrapper.vue')['default']
   }
 }

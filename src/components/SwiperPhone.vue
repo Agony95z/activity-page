@@ -33,4 +33,9 @@ const handleChange = (index) => {
     background: url('../assets/img/p_awards.svg') no-repeat;
     background-size: cover;
   }
+  .el-carousel__indicator--horizontal.is-active {
+    .el-carousel__button {
+      background: #0055D5;
+    }
+  }
 </style>
