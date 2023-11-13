@@ -7,6 +7,13 @@ import soft_1 from '@/assets/img/soft_1.png';
 import soft_2 from '@/assets/img/soft_2.png';
 import soft_3 from '@/assets/img/soft_3.png';
 import soft_4 from '@/assets/img/soft_4.png';
+import cfd_feature_1 from '@/assets/img/cfd_feature_1.svg';
+import cfd_feature_2 from '@/assets/img/cfd_feature_2.svg';
+import honor_1 from '@/assets/img/honor_1.png';
+import honor_2 from '@/assets/img/honor_2.png';
+import honor_3 from '@/assets/img/honor_3.png';
+import honor_4 from '@/assets/img/honor_4.png';
+import honor_5 from '@/assets/img/honor_5.png';
 
 
 const cfdArr = [
@@ -22,19 +29,52 @@ const softArr = [
   {id:4, text: 'DNS of shock-wave turbulent layer interaction', img: soft_4},
 ];
 
-const timeArr = [
-  {id: 1, text1: '2013', text2: '陕西省科学技术三等奖'},
-  {id: 2, text1: '2015', text2: '全国并行应用挑战赛“最佳应用奖”'},
-  {id: 3, text1: '2018', text2: '陕西省科学技术二等奖'},
-  {id: 4, text1: '2019', text2: '中国科学院信息化优秀案例'},
-  {id: 5, text1: '2020', text2: '国家超算广州中心“天河之星”优秀应用奖'},
-  {id: 6, text1: '2022', text2: '中国空气动力学科学技术一等奖(自然科学类)', active: true},
-];
+const timeArr = ref([
+  {id: 1, text1: '2013', text2: '陕西省科技三等奖', text3: '中国科学院超级计算“最佳应用奖”', active: false},
+  {id: 2, text1: '2018', text2: '陕西省科学技术二等奖', text3: '天津超算“天河应用创新优秀奖”', active: false},
+  {id: 3, text1: '2019', text2: '“中国科学院信息化优秀案例”奖', active: false},
+  {id: 4, text1: '2020', text2: '广州超算“天河之星” 优秀应用奖', active: false},
+  {id: 5, text1: '2022', text2: '中国空气动力学会科学技术一等奖(自然科学类)', active: true},
+]);
+const awardIndex = ref(5);
+const timeAwardsArr = ref({
+  1: [
+    {
+      id: 1, text1: '2013年', text2: '陕西省科技二等奖', text3: '科学技术奖一等奖', text4: '中国科学院超级计算“佳应用奖”', url: honor_5,
+    }
+  ],
+  2: [
+    {
+      id: 1, text1: '2018年', text2: '陕西省科技二等奖', text3: '天津超算“天河应用创新优秀奖”', url: honor_4,
+    }
+  ],
+  3: [
+    {
+      id: 1, text1: '2019年', text2: '“中国科学院信息化优秀案例”奖', url: honor_3,
+    }
+  ],
+  4: [
+    {
+      id: 1, text1: '2020年', text2: '广州超算“天河之星”优秀应用奖', url: honor_2,
+    }
+  ],
+  5: [
+    {
+      id: 1, text1: '2022年', text2: '中国空气动力学会科学技术一等奖(自然科学类)', text3: '中国空气动力学会是国家一级学会，也是国内唯一一家空气动力学专业的社会团体。学会于1980年由中国科协批准成立，并报原国防科工委批准备案，于1991年7月在民政部登记注册。1997年根据中办、国务院有关文件要求，明确学会挂靠单位是中国空气动力研究与发展中心，业务主管单位是中国科协，登记管理单位是民政部。', url: honor_1,
+    }
+  ],
+});
+const handleYear = (idx) => {
+  timeArr.value.forEach((item, index) => {
+    item.active = index === idx;
+  });
+  awardIndex.value = idx + 1;
+};
 const featureArr = [
-  {id:1, text: '多尺度力学基础框架', content: '构建了工程材料和结构的多尺度力学计算基础框架，由前处理、后处理、计算模块三大部分组成', img: ''},
-  {id:2, text: '计算模块集成', content: '包含结构有限元分析、结构疲劳寿命分析、微观分子模拟、分子/有限元耦合分析等计算模块', img: ''},
-  {id:3, text: '工程应用和基础研究结合', content: '既可应用于工程材料和结构的力学性能分析，也可用于基础力学机理和算法研究', img: ''},
-  {id:4, text: '灵活的可扩展性', content: '可针对具体行业需求进行定制化开发，也可通过面向对象开发进行功能扩展', img: ''},
+  {id:1, text: '精度高、计算分辨率高', content: '最高计算精度达8阶', content2: '获得高时空分辨率流场', content3: '用于流动机理深入研究等', img: cfd_feature_1},
+  {id:2, text: '并行扩展性强', content: '天河2上实现24万CPU核心并行计算', content2: '神威•太湖之光上实现300余万核心异构并行计算', content3: '中科先导1号上实现2万余块DCU卡大规模异构计算', img: cfd_feature_2},
+/*  {id:3, text: '工程应用和基础研究结合', content: '既可应用于工程材料和结构的力学性能分析，也可用于基础力学机理和算法研究', img: ''},
+  {id:4, text: '灵活的可扩展性', content: '可针对具体行业需求进行定制化开发，也可通过面向对象开发进行功能扩展', img: ''},*/
 ];
 const offserX = ref(0);
 const transformStyle = computed({
@@ -103,14 +143,11 @@ onMounted(() => {
             <div class="flex-1 flex flex-col item relative pt-[40px] pl-[80px] pr-[30px] pb-[28px]" v-for="item in featureArr.slice(0, 2)" :key="item.id">
               <p class="text-[#333] border-box font-semibold text-[16px]">{{ item.text }}</p>
               <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content }}</p>
-              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px] bg-[red]"></div>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="flex-1 flex item item_2 flex-col relative pt-[40px] pl-[80px] pr-[30px] pb-[28px]" v-for="item in featureArr.slice(2, 4)" :key="item.id">
-              <p class="text-[#333] border-box font-semibold text-[16px]">{{ item.text }}</p>
-              <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content }}</p>
-              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px] bg-[red]"></div>
+              <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content2 }}</p>
+              <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content3 }}</p>
+              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px]">
+                <img :src="item.img" alt="">
+              </div>
             </div>
           </div>
         </div>
@@ -139,17 +176,6 @@ onMounted(() => {
       </div>
     </div>
     <trans-wrapper :arr="softArr"></trans-wrapper>
-<!--    <div class="software_content">
-      <div class="soft_wrap">
-        <div class="soft_item" v-for="item in softArr" :key="item.id">
-          <div class="img_wrap">
-            <img :src="item.img" alt="">
-          </div>
-          <div class="year">{{item.text1}}</div>
-          <div class="detail">{{item.text2}}</div>
-        </div>
-      </div>
-    </div>-->
 
     <div class="award_wrapper">
       <div class="pro_text_l">
@@ -160,13 +186,13 @@ onMounted(() => {
 
     <div class="time_wrapper">
       <div class="arrow_l">
-        <div @click="handleLeft" class="arrow_dot arrow_dot_l">{{ '<' }}</div>
+        <div @click="handleLeft" class="arrow_dot arrow_dot_l"></div>
       </div>
       <div ref="fa" class="center">
         <div class="center_line"></div>
         <div ref="son" class="over_container" :style="{ transform: transformStyle }">
           <div style="display: flex;">
-            <div class="time_text" v-for="item in timeArr" :key="item.id">
+            <div class="time_text" v-for="(item, index) in timeArr" :key="item.id" @click="handleYear(index)">
               <div class="time_year">
                 <div style="padding: 0 10px;" :class="{'active': item?.active}">{{item.text1}}</div>
               </div>
@@ -175,24 +201,26 @@ onMounted(() => {
               </div>
               <div class="time_detail">
                 <div style="padding: 0 10px;" :class="{'active': item?.active}">{{item.text2}}</div>
+                <div v-if="item.text3" style="padding: 0 10px;" :class="{'active': item?.active}">{{item.text3}}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="arrow_r">
-        <div @click="handleRight" class="arrow_dot">{{ '>' }}</div>
+        <div @click="handleRight" class="arrow_dot arrow_dot_r"></div>
       </div>
     </div>
 
-    <div class="honor_details">
+    <div class="honor_details" v-for="(item, index) in timeAwardsArr[awardIndex]" :key="index">
       <div class="honor_pic">
-        <img src="../assets/img/honor_1.png" alt="">
+        <img v-if="awardIndex < 3" class="w-[600px] h-[300px]" :src="item.url" alt="">
+        <img v-else class="w-[420px] h-[300px]" :src="item.url" alt="">
       </div>
       <div class="honor_content">
-        <div class="honor_year">2022年</div>
-        <div class="honor_award">中国空气动力学会科学技术一等奖(自然科学类)</div>
-        <div class="honor_text">中国空气动力学会是国家一级学会，也是国内唯一一家空气动力学专业的社会团体。学会于1980年由中国科协批准成立，并报原国防科工委批准备案，于1991年7月在民政部登记注册，1997年根据中办、国务院有关文件要求，明确学会挂靠单位是中国空气动力研究与发展中心，业务主管单位是中国科协，等级管理单位是民政部。</div>
+        <div class="honor_year">{{ item.text1 }}</div>
+        <div class="honor_award">{{ item.text2 }}</div>
+        <div v-if="item.text3" class="honor_text">{{ item.text3 }}</div>
       </div>
     </div>
   </div>
@@ -215,7 +243,7 @@ onMounted(() => {
           z-index: -1;
         }
       }
-      &:after {
+     /* &:after {
         content: '';
         position: absolute;
         width: 80%;
@@ -224,7 +252,7 @@ onMounted(() => {
         bottom: 0;
         background: #e7e7e7;
         transform: translateX(-50%);
-      }
+      }*/
     }
     .item:nth-child(2n-1) {
       &:before {
@@ -250,17 +278,18 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 240px;
+  height: 340px;
   padding: 20px;
   box-shadow: 0 0 20px 0 rgba(35,35,35,0.06);
   box-sizing: border-box;
   .honor_pic {
-    width: 268px;
-    height: 178px;
+    //width: 268px;
+    //height: 178px;
+    border: 1px dashed #ccc;
     font-size: 0;
     img {
-      width: 100%;
-      height: 100%;
+      //width: 100%;
+      //height: 100%;
     }
   }
   .honor_content {
@@ -331,6 +360,7 @@ onMounted(() => {
       width: 16px;
       height: 16px;
       border-radius: 50%;
+      cursor: pointer;
       background: #fff;
       border: 1px solid #ccc;
       &.active {
@@ -344,7 +374,7 @@ onMounted(() => {
     //background: firebrick;
     .arrow_dot {
       cursor: pointer;
-      margin-top: 40px;
+      margin-top: 22px;
       width: 20px;
       height: 20px;
       border-radius: 50%;
@@ -354,6 +384,14 @@ onMounted(() => {
       color: #ccc;
       background: #fff;
       border: 1px solid #ccc;
+      &.arrow_dot_l {
+        background: url('../assets/img/arrow_dot_left.svg') no-repeat;
+        background-size: cover;
+      }
+      &.arrow_dot_r {
+        background: url('../assets/img/arrow_dot_right.svg') no-repeat;
+        background-size: cover;
+      }
     }
   }
   .arrow_l {
@@ -364,8 +402,8 @@ onMounted(() => {
     display: inline-block;
   }
   .time_text {
-    width: 180px;
-    height: 120px;
+    width: 200px;
+    height: 160px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -374,7 +412,7 @@ onMounted(() => {
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      height: 49px;
+      height: 44px;
       padding-bottom: 10px;
       box-sizing: border-box;
       .active {
@@ -382,9 +420,9 @@ onMounted(() => {
       }
     }
     .time_detail {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      //display: flex;
+      //justify-content: center;
+      //align-items: flex-start;
       height: 69px;
       padding-top: 10px;
       box-sizing: border-box;

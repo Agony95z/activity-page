@@ -6,7 +6,7 @@ const logoBtnArr = [
   {id: 1, text: 'OpenCFD'},
   {id: 2, text: 'CDEM'},
   {id: 3, text: 'CADO'},
-  {id: 4, text: 'xScale'},
+  {id: 4, text: 'SiMech'},
 ];
 const handleBannerBtn = (idx) => {
   router.push(`/page${idx + 1}?idx=${idx}`)

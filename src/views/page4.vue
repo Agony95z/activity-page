@@ -7,14 +7,22 @@ import soft_1 from '@/assets/img/mech_soft_1.png';
 import soft_2 from '@/assets/img/mech_soft_2.png';
 import soft_3 from '@/assets/img/mech_soft_3.png';
 import soft_4 from '@/assets/img/mech_soft_4.png';
-
+import mech_module_1 from '@/assets/img/mech_module_1.png';
+import mech_module_2 from '@/assets/img/mech_module_2.png';
+import mech_module_3 from '@/assets/img/mech_module_3.png';
+import mech_module_4 from '@/assets/img/mech_module_4.png';
+import mech_module_5 from '@/assets/img/mech_module_5.png';
+import mech_feature_1 from '@/assets/img/mech_feature_1.svg';
+import mech_feature_2 from '@/assets/img/mech_feature_2.svg';
+import mech_feature_3 from '@/assets/img/mech_feature_3.svg';
+import mech_feature_4 from '@/assets/img/mech_feature_4.svg';
 
 const cfdArr = [
-  {id: 1, text1: 'xScale', text2: 'SiMech xScale是为SiMech计算模块开发的前端集成软件，它拥有跨平台的用户操作界面，可为其它后端多尺度计算模块提供相应的前处理、任务提交和结果文件显示功能。', img: ''},
-  {id: 2, text1: 'Feat', text2: 'SiMech Feat是结构有限元计算模块，支持多种单元、线性/非线性、静力学/动力学、模态、接触、耦合约束等功能，可直接导入INP文件，并集成多种高性能求解器。', img: ''},
-  {id: 3, text1: 'Fatigue', text2: 'SiMech Fatigue是结构疲劳计算模块，支持多种模型数据输入、结点分组计算、单元分组、外表面识别，载荷载荷历程、应力文件组合、关联、编辑、插值，不同疲劳应力模型等功能。', img: ''},
-  {id: 4, text1: 'Hymacs', text2: 'SiMech Hymacs是分子/准连继耦合跨尺度计算模块，用于针对微观材料开展跨尺度计算分析，它是基于耦合分子/集团统计热力学跨尺度计算理论框架，开发的并行计算程序，目前主要用于基础研究。', img: ''},
-  {id: 5, text1: 'pyFEM', text2: 'pyFEM是一个完全基于python语言实现的极简有限元求解器。主要用于有限元方法的学习、有限元算法验证和快速建立材料本构模型的程序原型。', img: ''},
+  {id: 1, text1: 'xScale', text2: 'SiMech xScale是为SiMech计算模块开发的前端集成软件，它拥有跨平台的用户操作界面，可为其它后端多尺度计算模块提供相应的前处理、任务提交和结果文件显示功能。', img: mech_module_1},
+  {id: 2, text1: 'Feat', text2: 'SiMech Feat是结构有限元计算模块，支持多种单元、线性/非线性、静力学/动力学、模态、接触、耦合约束等功能，可直接导入INP文件，并集成多种高性能求解器。', img: mech_module_2},
+  {id: 3, text1: 'Fatigue', text2: 'SiMech Fatigue是结构疲劳计算模块，支持多种模型数据输入、结点分组计算、单元分组、外表面识别，载荷载荷历程、应力文件组合、关联、编辑、插值，不同疲劳应力模型等功能。', img: mech_module_3},
+  {id: 4, text1: 'Hymacs', text2: 'SiMech Hymacs是分子/准连继耦合跨尺度计算模块，用于针对微观材料开展跨尺度计算分析，它是基于耦合分子/集团统计热力学跨尺度计算理论框架，开发的并行计算程序，目前主要用于基础研究。', img: mech_module_4},
+  {id: 5, text1: 'pyFEM', text2: 'pyFEM是一个完全基于python语言实现的极简有限元求解器。主要用于有限元方法的学习、有限元算法验证和快速建立材料本构模型的程序原型。', img: mech_module_5},
   {id: 6, text1: '', text2: '', img: ''},
 ];
 const softArr = [
@@ -25,10 +33,10 @@ const softArr = [
 ];
 
 const featureArr = [
-  {id:1, text: '多尺度力学基础框架', content: '构建了工程材料和结构的多尺度力学计算基础框架，由前处理、后处理、计算模块三大部分组成', img: ''},
-  {id:2, text: '计算模块集成', content: '包含结构有限元分析、结构疲劳寿命分析、微观分子模拟、分子/有限元耦合分析等计算模块', img: ''},
-  {id:3, text: '工程应用和基础研究结合', content: '既可应用于工程材料和结构的力学性能分析，也可用于基础力学机理和算法研究', img: ''},
-  {id:4, text: '灵活的可扩展性', content: '可针对具体行业需求进行定制化开发，也可通过面向对象开发进行功能扩展', img: ''},
+  {id:1, text: '多尺度力学基础框架', content: '构建了工程材料和结构的多尺度力学计算基础框架，由前处理、后处理、计算模块三大部分组成', img: mech_feature_1},
+  {id:2, text: '计算模块集成', content: '包含结构有限元分析、结构疲劳寿命分析、微观分子模拟、分子/有限元耦合分析等计算模块', img: mech_feature_2},
+  {id:3, text: '工程应用和基础研究结合', content: '既可应用于工程材料和结构的力学性能分析，也可用于基础力学机理和算法研究', img: mech_feature_3},
+  {id:4, text: '灵活的可扩展性', content: '可针对具体行业需求进行定制化开发，也可通过面向对象开发进行功能扩展', img: mech_feature_4},
 ];
 const container = ref(null);
 
@@ -45,7 +53,7 @@ onMounted(() => {
         <img src="../assets/img/banner_2.png" alt="">
       </div>
       <div class="banner_text">
-        <img src="../assets/img/banner_2_text.svg" alt="">
+        <img src="../assets/img/banner_mech_text.svg" alt="">
       </div>
       <div class="banner_text_2">
         <img src="../assets/img/mech.svg" alt="">
@@ -75,14 +83,18 @@ onMounted(() => {
             <div class="flex-1 flex flex-col item relative pt-[40px] pl-[80px] pr-[30px] pb-[28px]" v-for="item in featureArr.slice(0, 2)" :key="item.id">
               <p class="text-[#333] border-box font-semibold text-[16px]">{{ item.text }}</p>
               <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content }}</p>
-              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px] bg-[red]"></div>
+              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px]">
+                <img :src="item.img" alt="">
+              </div>
             </div>
           </div>
           <div class="flex">
             <div class="flex-1 flex item item_2 flex-col relative pt-[40px] pl-[80px] pr-[30px] pb-[28px]" v-for="item in featureArr.slice(2, 4)" :key="item.id">
               <p class="text-[#333] border-box font-semibold text-[16px]">{{ item.text }}</p>
               <p class="text-[#666] pr-[80px] border-box text-[14px] mt-2.5">{{ item.content }}</p>
-              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px] bg-[red]"></div>
+              <div class="absolute bottom-[28px] right-[30px] item_img w-[36px] h-[36px]">
+                <img :src="item.img" alt="">
+              </div>
             </div>
           </div>
         </div>
@@ -102,7 +114,9 @@ onMounted(() => {
           <div class="content_l">{{ item.text1 }}</div>
           <div class="content_r">{{ item.text2 }}</div>
           <div class="w-full h-[90px]">
-            <div class="w-[200px] h-[90px] bg-red-100 absolute bottom-[0] right-[0]"></div>
+            <div class="w-[285px] h-[175px] absolute bottom-[0] right-[0]">
+              <img :src="item.img" alt="">
+            </div>
           </div>
         </div>
       </div>
@@ -111,7 +125,9 @@ onMounted(() => {
           <div class="content_l">{{ item.text1 }}</div>
           <div class="content_r">{{ item.text2 }}</div>
           <div class="w-full h-[90px]">
-            <div class="w-[200px] h-[90px] bg-red-100 absolute bottom-[0] right-[0]"></div>
+            <div class="w-[285px] h-[175px] absolute bottom-[0] right-[0]">
+              <img :src="item.img" alt="">
+            </div>
           </div>
         </div>
       </div>
@@ -500,7 +516,7 @@ onMounted(() => {
   }
   .banner_text {
     position: absolute;
-    width: 761px;
+    width: 1200px;
     height: 200px;
     top: 50%;
     left: 50%;

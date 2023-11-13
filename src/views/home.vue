@@ -35,7 +35,7 @@ const proArr = [
   },
   {
     id: 1,
-    text_1: 'XXXXXXXXXX分析系统',
+    text_1: 'CADO分析系统',
     text_2: 'CADO',
     text_3: '了解更多',
     text_4: 'CADO系统一般分为二维和三维系统。系统内表达的任何设计都变成了几何图形，所依赖的数学模型是几何模型，系统记录了这些图素的几何特征。二维CAD系统一般由图形的输入与编辑、硬件接口、数据接口和二次开发工具等几部分组成。',
@@ -51,11 +51,11 @@ const proArr = [
   },
 ];
 const honorArr = [
-  {id: 1, text: '中国空气动力学会科学技术一等奖'},
+  {id: 1, text: '国家超算广州中心“天河之星”优秀应用奖'},
   {id: 2, text: '中国空气动力学会科学技术一等奖'},
-  {id: 3, text: '央企先进集体'},
-  {id: 4, text: '国家高新技术企业'},
-  {id: 5, text: 'XXXXXXXX'},
+  {id: 3, text: '地质体连续-非连续数值分析方法CDEM'},
+  {id: 4, text: '全国并行应用挑战赛“最佳应用奖”'},
+  {id: 5, text: '全国并行应用挑战赛“最佳应用奖”'},
 ];
 const softwareArr = [
   {id: 1, text: '3大领域核心求解器', img: soft_1},
@@ -164,11 +164,6 @@ onMounted(() => {
           <div class="text_1">SOFTWARE CENTER</div>
           <div class="text_2">软件中心</div>
         </div>
-<!--        <div class="pro_text_r">
-          <div class="text_x">XXXXXXXXXXXXXXXXXXXXXXX</div>
-          <div class="text_x">XXXXXXXXXXXXXXXXXX</div>
-          <div class="text_cn">独立自主  全过程分析  多场耦合  快速高效协同  应用场景广泛</div>
-        </div>-->
       </div>
       <div class="pro_software flex justify-around mt-[100px]">
         <div class="soft_l flex flex-col justify-center">
@@ -223,14 +218,13 @@ onMounted(() => {
         <div class="honor_text" @click="handleHonor(index)" :class="{active: activeNum === index}" v-for="(item, index) in honorArr" :key="item.id">{{ item.text }}</div>
       </div>
       <div class="honor_pic">
-        <div class="pic_l"></div>
+        <div class="pic_l">
+          <img src="../assets/img/honor_1.png" alt="">
+        </div>
         <div class="pic_r">
           <div class="pic_r_1"></div>
           <div class="pic_r_2">
-            <div>XXXXXXXXXXXXXXXXXXXXXX</div>
-            <div>XXXXXXXXXXXXXXXXXXXXXX</div>
-            <div>XXXXXXXXXXXXXXXXXXXXXX</div>
-            <div>XXXXXXXXXXXXXXXXXXXXXX</div>
+            <div class="text-[14px] text-white">中国空气动力学会是国家一级学会，也是国内唯一一家空气动力学专业的社会团体。学会于1980年由中国科协批准成立，并报原国防科工委批准备案，于1991年7月在民政部登记注册。1997年根据中办、国务院有关文件要求，明确学会挂靠单位是中国空气动力研究与发展中心，业务主管单位是中国科协，登记管理单位是民政部。</div>
           </div>
         </div>
       </div>
@@ -469,7 +463,7 @@ onMounted(() => {
 }
 .pro_four {
   margin-top: 20px;
-  padding: 150px 10%;
+  padding: 150px 9%;
   height: 700px;
   box-sizing: border-box;
   background: url('../assets/img/develop_bg.png') no-repeat;
@@ -501,8 +495,9 @@ onMounted(() => {
     width: 500px;
     height: 350px;
     z-index: 3;
-    background: url("../assets/img/honor_1.png") no-repeat;
-    background-size: cover;
+    font-size: 0;
+    /*background: url("../assets/img/honor_1.png") no-repeat;
+    background-size: cover;*/
     position: absolute;
     top: 0;
     left: 0;
@@ -518,15 +513,15 @@ onMounted(() => {
     right: 0;
     display: flex;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    //white-space: nowrap;
     .pic_r_1 {
       width: 40%;
     }
     .pic_r_2 {
       width: 60%;
-      padding: 90px 15px 90px 82px;
+      padding: 30px 15px 30px 82px;
       box-sizing: border-box;
-      white-space: nowrap;
+      //white-space: nowrap;
       div {
         margin-bottom: 15px;
         color: #fff;

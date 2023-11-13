@@ -3,32 +3,37 @@ import { computed, onMounted, ref } from "vue";
 import Header from '@/components/Header.vue';
 import TitleWrapper from "@/components/TitleWrapper.vue";
 import TransWrapper from "@/components/TransWrapper.vue";
-import soft_1 from '@/assets/img/mech_soft_1.png';
-import soft_2 from '@/assets/img/mech_soft_2.png';
-import soft_3 from '@/assets/img/mech_soft_3.png';
-import soft_4 from '@/assets/img/mech_soft_4.png';
+import soft_1 from '@/assets/img/cado_soft_1.png';
+import soft_2 from '@/assets/img/cado_soft_2.png';
+import soft_3 from '@/assets/img/cado_soft_3.png';
+import soft_4 from '@/assets/img/cado_soft_4.png';
+import cado_module_1 from '@/assets/img/cado_module_1.svg';
+import cado_module_2 from '@/assets/img/cado_module_2.svg';
+import cado_module_3 from '@/assets/img/cado_module_3.svg';
+import cado_module_4 from '@/assets/img/cado_module_4.svg';
+import cado_module_5 from '@/assets/img/cado_module_5.svg';
 
 
 const cfdArr = [
-  {id: 1, text1: 'xScale', text2: 'SiMech xScale是为SiMech计算模块开发的前端集成软件，它拥有跨平台的用户操作界面，可为其它后端多尺度计算模块提供相应的前处理、任务提交和结果文件显示功能。', img: ''},
-  {id: 2, text1: 'Feat', text2: 'SiMech Feat是结构有限元计算模块，支持多种单元、线性/非线性、静力学/动力学、模态、接触、耦合约束等功能，可直接导入INP文件，并集成多种高性能求解器。', img: ''},
-  {id: 3, text1: 'Fatigue', text2: 'SiMech Fatigue是结构疲劳计算模块，支持多种模型数据输入、结点分组计算、单元分组、外表面识别，载荷载荷历程、应力文件组合、关联、编辑、插值，不同疲劳应力模型等功能。', img: ''},
-  {id: 4, text1: 'Hymacs', text2: 'SiMech Hymacs是分子/准连继耦合跨尺度计算模块，用于针对微观材料开展跨尺度计算分析，它是基于耦合分子/集团统计热力学跨尺度计算理论框架，开发的并行计算程序，目前主要用于基础研究。', img: ''},
-  {id: 5, text1: 'pyFEM', text2: 'pyFEM是一个完全基于python语言实现的极简有限元求解器。主要用于有限元方法的学习、有限元算法验证和快速建立材料本构模型的程序原型。', img: ''},
+  {id: 1, text1: 'CFD求解', text2: '基于大规模多块结构网格和大规模混合网格的有限体积法求解器，用于工程复杂流场的定常，非定常流动分析。', img: cado_module_1},
+  {id: 2, text1: '静气动弹性仿真', text2: '准确地模拟飞行器在飞行过程中结构变形情况，分析飞行器的弹性特性和气动性能，对结构静力学稳定性进行评估。', img: cado_module_2},
+  {id: 3, text1: '颤振分析', text2: '模拟飞行器在飞行过程中的动态响应历程，对飞行器的颤振边界进行预测，分析飞行器的动稳定性。', img: cado_module_3},
+  {id: 4, text1: '抖振仿真', text2: '跨声速飞行激波抖振边界的预测和分析。', img: cado_module_4},
+  {id: 5, text1: '多学科耦合综合优化模块', text2: '将气动力和结构静/动力学紧密耦合，通过综合考虑不同学科间的相互作用，针对不同的优化问题，可实现气动外形优化，气动结构综合优化。', img: cado_module_5},
   {id: 6, text1: '', text2: '', img: ''},
 ];
 const softArr = [
-  {id:1, text: '高速列车整车结构应力和寿命分析', img: soft_1},
-  {id:2, text: '高速列车关键构件的应力分析和寿命优化', img: soft_2},
-  {id:3, text: '盾构刀盘结构服役工作的变形分析', img: soft_3},
-  {id:4, text: '超高速电磁驱动结构的变形分析和优化设计', img: soft_4},
+  {id:1, text: '跨声速激波抖振', img: soft_1},
+  {id:2, text: '火星进入舱的配平翼抖振', img: soft_2},
+  {id:3, text: '减阻杆气动弹性失稳', img: soft_3},
+  {id:4, text: '飞机颤振', img: soft_4},
 ];
 
 const featureArr = [
-  {id:1, text: '多尺度力学基础框架', content: '构建了工程材料和结构的多尺度力学计算基础框架，由前处理、后处理、计算模块三大部分组成', img: ''},
-  {id:2, text: '计算模块集成', content: '包含结构有限元分析、结构疲劳寿命分析、微观分子模拟、分子/有限元耦合分析等计算模块', img: ''},
-  {id:3, text: '工程应用和基础研究结合', content: '既可应用于工程材料和结构的力学性能分析，也可用于基础力学机理和算法研究', img: ''},
-  {id:4, text: '灵活的可扩展性', content: '可针对具体行业需求进行定制化开发，也可通过面向对象开发进行功能扩展', img: ''},
+  {id:1, text: 'CFD求解', content: '可求解基于结构网格、混合网格的低，压，跨和超声速的复杂结构外形的流场分析，准确地模拟飞行器在不同飞行状态下的气动特性，包括升力、阻力、侧向力等。', img: ''},
+  {id:2, text: '全过程分析', content: '考虑结构的柔性特征，准确模拟飞行器在飞行过程中的振动和变形。针对非线性结构（考虑结构几何非线性和间隙非线性）实现了气动力和结构两场非线性耦合的静气动弹性分析方法。', img: ''},
+  {id:3, text: '抖振仿真', content: '提供能够考虑弹性效应的准确预测和描述跨声速抖振的仿真分析模型', img: ''},
+  {id:4, text: '多学科耦合综合优化模块', content: '建立了基于代理模型的优化设计体系，代替复杂CFD或气动弹性耦合分析，提高优化设计的效率，在优化过程中引入了设计变量不确定区间分析方法和鲁棒优化设计方法，提高了综合优化设计的有效性。', img: ''},
 ];
 const container = ref(null);
 
@@ -45,7 +50,7 @@ onMounted(() => {
         <img src="../assets/img/banner_2.png" alt="">
       </div>
       <div class="banner_text">
-        <img src="../assets/img/banner_2_text.svg" alt="">
+        <img src="../assets/img/banner_cado_text.svg" alt="">
       </div>
       <div class="banner_text_2">
         <img src="../assets/img/cado.svg" alt="">
@@ -63,7 +68,7 @@ onMounted(() => {
               CADO软件是一款用于飞行器气动弹性数值仿真和优化设计的综合性软件。集成了高精度气动计算方法及气动弹性耦合仿真方法，并发展了考虑气弹耦合效应的基于代理模型的多学科耦合综合优化设计方法。可为新一代宽体客机的性能预测提供基础计算支持，为现阶段的飞机型号研制提供新的设计思路，为将来新型布局飞机的研究提供技术支持。CADO已经完成大量工程实际问题的数值仿真工作，相关工程型号任务多达十多项。其中国产C919飞机的静气弹型架外形修正和中俄联合研制的CR929项目静气动弹性相关研究工作，为本软件在民用领域的典型运用。该软件获得国防科学技术奖三等奖。
             </div>
             <div class="con_r">
-              <img src="../assets/img/mech_introduce_1.png" alt="">
+              <img src="../assets/img/cado_introduce_1.png" alt="">
             </div>
           </div>
         </div>
@@ -107,8 +112,10 @@ onMounted(() => {
         <div class="cfd_content relative" v-for="item in cfdArr.slice(0, 3)" :key="item.id">
           <div class="content_l">{{ item.text1 }}</div>
           <div class="content_r">{{ item.text2 }}</div>
-          <div class="w-full h-[90px]">
-            <div class="w-[200px] h-[90px] bg-red-100 absolute bottom-[0] right-[0]"></div>
+          <div class="w-full h-[40px]">
+            <div class="w-[200px] h-[40px] flex justify-end items-end absolute bottom-[20px] right-[20px]">
+              <img :src="item.img" alt="">
+            </div>
           </div>
         </div>
       </div>
@@ -116,8 +123,10 @@ onMounted(() => {
         <div class="cfd_content relative" :class="{'isSix': item.id === 6}" v-for="item in cfdArr.slice(3, 6)" :key="item.id">
           <div class="content_l">{{ item.text1 }}</div>
           <div class="content_r">{{ item.text2 }}</div>
-          <div class="w-full h-[90px]">
-            <div class="w-[200px] h-[90px] bg-red-100 absolute bottom-[0] right-[0]"></div>
+          <div class="w-full h-[40px]">
+            <div class="w-[200px] h-[40px] flex justify-end items-end absolute bottom-[20px] right-[20px]">
+              <img :src="item.img" alt="">
+            </div>
           </div>
         </div>
       </div>
@@ -532,7 +541,7 @@ onMounted(() => {
   }
   .banner_text {
     position: absolute;
-    width: 761px;
+    width: 1200px;
     height: 200px;
     top: 50%;
     left: 50%;
