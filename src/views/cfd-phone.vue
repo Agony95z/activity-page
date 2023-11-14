@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import HeaderPhone from "../components/HeaderPhone.vue";
-import TabsPhone from "../components/TabsPhone.vue";
+// import TabsPhone from "../components/TabsPhone.vue";
 import SwiperPhone from "../components/SwiperPhone.vue";
 import SwiperPhoneAppCase from "../components/SwiperPhoneAppCase.vue";
 
 defineProps({
+  cfdArr: Array,
   featureArr: Array,
   swiperArr: Array,
   timeAwardsArr: Array,
@@ -47,6 +48,27 @@ defineProps({
       </div>
     </div>
 
+    <div class="px-[15px] w-full relative pt-[30px] pb-5 mt-5 bg-[#fff] z-[-5]">
+      <div class="text-[20px] text-[#000] font-semibold text-center w-full">功能模块</div>
+      <div class="w-full text-center absolute font-semibold text-[20px] text-[#e0e0e0] top-[15px] left-1/2 -translate-x-1/2 z-[-2]">FUNCTIONAL MODULE</div>
+      <div class="flex justify-center">
+        <div v-for="item in cfdArr.slice(0, 2)" class="mt-5">
+          <div class="mx-2.5 px-2.5 border-box flex justify-center items-center w-[160px] h-[30px] feature_1 text-[12px] text-[#fff] font-semibold">{{ item.text1 }}</div>
+          <div class="mx-2.5 px-2.5 text-[#232323] text-[12px] leading-[22px] mt-2.5">{{ item.text2 }}</div>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <div v-for="item in cfdArr.slice(2, 4)" class="mt-5">
+          <div class="mx-2.5 px-2.5 border-box flex justify-center items-center w-[160px] h-[30px] feature_1 text-[12px] text-[#fff] font-semibold">{{ item.text1 }}</div>
+          <div class="mx-2.5 px-2.5 text-[#232323] text-[12px] leading-[22px] mt-2.5">{{ item.text2 }}</div>
+        </div>
+      </div>
+<!--      <div v-for="item in cfdArr" class="mt-5">
+        <div class="mx-auto flex justify-center items-center w-[160px] h-[30px] feature_1 text-[12px] text-[#fff] font-semibold">{{ item.text1 }}</div>
+        <div class="text-[#232323] text-[12px] leading-[22px] mt-2.5">{{ item.text2 }}</div>
+      </div>-->
+    </div>
+
     <div class="pt-[30px] relative">
       <div class="text-[20px] text-[#000] font-semibold text-center w-full">应用案例</div>
       <div class="absolute w-full text-center font-semibold text-[20px] text-[#e0e0e0] top-[15px] left-1/2 -translate-x-1/2 z-[-5]">FUNCTIONAL MODULE</div>
@@ -57,7 +79,7 @@ defineProps({
 
     <div class="pt-[30px] relative bg-[#F7F7F8] z-[-5]">
       <div class="text-[20px] text-[#000] font-semibold text-center w-full">获奖情况</div>
-      <div class="absolute w-full text-center font-semibold text-[20px] text-[#e0e0e0] top-[15px] left-1/2 -translate-x-1/2 z-[-3]">APPLICATION CASES</div>
+      <div class="absolute w-full text-center font-semibold text-[20px] text-[#e0e0e0] top-[15px] left-1/2 -translate-x-1/2 z-[-3]">HONOR & AWARDS</div>
     </div>
     <div class="pt-[30px] bg-[#F7F7F8]">
       <swiper-phone :arr="timeAwardsArr"></swiper-phone>

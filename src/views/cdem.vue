@@ -4,10 +4,15 @@ import Header from '@/components/Header.vue';
 import TitleWrapper from "@/components/TitleWrapper.vue";
 import TransWrapper from "@/components/TransWrapper.vue";
 import SwiperAwards from "@/components/SwiperAwards.vue";
-import soft_1 from '@/assets/img/cdem_soft_1.png';
-import soft_2 from '@/assets/img/cdem_soft_2.png';
-import soft_3 from '@/assets/img/cdem_soft_3.png';
-import soft_4 from '@/assets/img/cdem_soft_4.png';
+import CdemPhone from "./cdem-phone.vue";
+// import soft_1 from '@/assets/img/cdem_soft_1.png';
+// import soft_2 from '@/assets/img/cdem_soft_2.png';
+// import soft_3 from '@/assets/img/cdem_soft_3.png';
+// import soft_4 from '@/assets/img/cdem_soft_4.png';
+import soft_1 from '@/assets/img/cdem_gif_1.gif';
+import soft_2 from '@/assets/img/cdem_gif_2.gif';
+import soft_3 from '@/assets/img/cdem_gif_3.gif';
+import soft_4 from '@/assets/img/cdem_gif_4.gif';
 import cdem_feature_1 from '@/assets/img/cdem_feature_1.svg';
 import cdem_feature_2 from '@/assets/img/cdem_feature_2.svg';
 import cdem_feature_3 from '@/assets/img/cdem_feature_3.svg';
@@ -87,6 +92,40 @@ const timeAwardsArr = ref({
     }
   ],
 });
+const timeAwardsArrPhone = ref([
+  {
+    id: 1, text1: '2016年', text2: '深长隧道重大突涌水灾害预测预警与风险控制关键技术', text3: '科学技术奖一等奖', text4: '山东省科技厅', url: cdem_honor_10,
+  },
+  {
+    id: 2, text1: '2017年', text2: '爆破诱发周边岩体损伤破裂及边坡失稳的机理与评价方法研究', text3: '科技进步奖三等奖', text4: '中国冶金矿山企业协会', url: cdem_honor_9,
+  },
+  {
+    id: 3, text1: '2017年', text2: '矿山边坡滑坡风险评估与合成孔径雷达监测预警技术研究', text3: '科技进步奖一等奖', text4: '中国职业安全健康协会', url: cdem_honor_8,
+  },
+  {
+    id: 4, text1: '2018年', text2: '基于物联网技术的工程、地质自动化安全监测产业链及工程应用', text3: '科技进步奖二等奖', text4: '河北省科技厅', url: cdem_honor_7,
+  },
+  {
+    id: 5, text1: '2018年', text2: '基于采选系统能耗优化的爆破关键技术研究与实践', text3: '冶金科学技术奖二等奖', text4: '中国钢铁工业协会、中国金属学会',
+    url: cdem_honor_6,
+  },
+  {
+    id: 6, text1: '2018年', text2: '露天铁矿矿石破磨成本优化与工程示范', text3: '科技进步奖一等奖', text4: '中国冶金矿山企业协会', url: cdem_honor_5,
+  },
+  {
+    id: 7, text1: '2022年', text2: '山地红层区域工程灾变防控关键技术研发与应用', text3: '科技进步奖二等奖', text4: '中国产学研合作促进会', url: cdem_honor_4,
+  },
+  {
+    id: 8, text1: '2022年', text2: '连续介质力学框架的岩体非连续计算理论', text3: '自然科学奖二等奖', text4: '中国岩石力学与工程学会', url: cdem_honor_3,
+  },
+  {
+    id: 9, text1: '2022年', text2: '高陡边坡地震稳定性分析与支挡工程抗震设计关键技术', text3: '科学技术奖一等奖', text4: '中国铁路工程集团有限公司', url: cdem_honor_2,
+  },
+  {
+    id: 10, text1: '2023年', text2: '地质体连续-非连续数值分析方法CDEM', text3: '地质工程技术创新成果', text4: '中国岩石力学与工程学会', url: cdem_honor_1,
+  }
+
+]);
 const handleYear = (idx) => {
   timeArr.value.forEach((item, index) => {
     item.active = index === idx;
@@ -120,7 +159,6 @@ const handleLeft = () => {
   offserX.value = offserX.value + stepR.value
 };
 const handleRight = () => {
-  console.log(fa?.value?.clientWidth, Math.abs(offserX.value), son?.value?.clientWidth)
   const isOverFlow = fa?.value?.clientWidth + Math.abs(offserX.value) > son?.value?.clientWidth + 20;
   if (isOverFlow) return
   offserX.value = offserX.value + stepL.value
@@ -133,7 +171,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="container" class="pc_container">
+  <div ref="container" class="pc_container hidden md:block">
     <Header />
     <div class="banner-wrapper pt-[80px]">
       <div class="banner">
@@ -266,6 +304,9 @@ onMounted(() => {
     <div v-else class="carousel">
       <swiper-awards :array="timeAwardsArr[awardIndex]"></swiper-awards>
     </div>
+  </div>
+  <div class="block md:hidden">
+    <cdem-phone :feature-arr="featureArr" :cfd-arr="cfdArr" :swiper-arr="softArr" :time-awards-arr="timeAwardsArrPhone"></cdem-phone>
   </div>
 </template>
 

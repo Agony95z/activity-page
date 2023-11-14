@@ -13,8 +13,8 @@ const handleChange = (index) => {
   <div class="app-phone-swiper">
     <el-carousel @change="handleChange" :autoplay="false" :height="'253px'" indicator-position="outside">
       <el-carousel-item v-for="(item, index) in arr" :key="item.id">
-        <div>
-          <img :src="item.img" alt="">
+        <div class="w-full h-full mt-2.5">
+          <img class="w-full h-full" :src="item.img" alt="">
         </div>
       </el-carousel-item>
 
@@ -32,6 +32,9 @@ const handleChange = (index) => {
     padding: 0 40px;
     background: url('../assets/img/p_awards.svg') no-repeat;
     background-size: cover;
+  }
+  :deep(.el-carousel__button) {
+    width: 20px;
   }
   :deep(.el-carousel__indicator--horizontal.is-active) {
     .el-carousel__button {

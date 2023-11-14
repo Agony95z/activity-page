@@ -243,7 +243,7 @@ onMounted(() => {
     </div>
   </div>
   <div class="block md:hidden">
-    <cfd-phone :feature-arr="featureArr" :swiper-arr="softArr" :time-awards-arr="timeAwardsArrPhone"></cfd-phone>
+    <cfd-phone :feature-arr="featureArr" :swiper-arr="softArr" :time-awards-arr="timeAwardsArrPhone" :cfd-arr="cfdArr"></cfd-phone>
   </div>
 </template>
 
