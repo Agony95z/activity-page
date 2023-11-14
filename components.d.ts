@@ -11,8 +11,6 @@ declare module 'vue' {
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
-    ElTimeline: typeof import('element-plus/es')['ElTimeline']
-    ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
     Header: typeof import('./src/components/Header.vue')['default']
     HeaderPhone: typeof import('./src/components/HeaderPhone.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

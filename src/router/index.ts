@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
 
 const routes: Array<RouteRecordRaw> = [
@@ -6,7 +6,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/',
         name: 'layout',
         component: Layout,
-        redirect: '/page1',
+        redirect: '/home',
         meta: {
         },
         children: [
@@ -19,36 +19,36 @@ const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/home.vue')
             },
             {
-                path: '/page1',
-                name: 'page1',
+                path: '/opencfd',
+                name: 'OpenCFD',
                 meta: {
                     title: '云上仿真应用服务平台'
                 },
-                component: () => import('@/views/page1.vue')
+                component: () => import('@/views/opencfd.vue')
             },
             {
-                path: '/page2',
-                name: 'page2',
+                path: '/cdem',
+                name: 'CDEM',
                 meta: {
                     title: '云上仿真应用服务平台'
                 },
-                component: () => import('@/views/page2.vue')
+                component: () => import('@/views/cdem.vue')
             },
             {
-                path: '/page3',
-                name: 'page3',
+                path: '/cado',
+                name: 'CADO',
                 meta: {
                     title: '云上仿真应用服务平台'
                 },
-                component: () => import('@/views/page3.vue')
+                component: () => import('@/views/cado.vue')
             },
             {
-                path: '/page4',
-                name: 'page4',
+                path: '/simech',
+                name: 'SiMech',
                 meta: {
                     title: '云上仿真应用服务平台'
                 },
-                component: () => import('@/views/page4.vue')
+                component: () => import('@/views/simech.vue')
             },
         ]
     },
@@ -59,7 +59,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes
 })
 

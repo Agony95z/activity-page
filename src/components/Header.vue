@@ -9,42 +9,62 @@ const logoBtnArr = [
   {id: 4, text: 'SiMech'},
 ];
 const handleBannerBtn = (idx) => {
-  router.push(`/page${idx + 1}?idx=${idx}`)
+  switch (idx) {
+    case 0: router.push(`/opencfd?idx=${idx}`)
+          break;
+    case 1: router.push(`/cdem?idx=${idx}`)
+      break;
+    case 2: router.push(`/cado?idx=${idx}`)
+      break;
+    case 3: router.push(`/simech?idx=${idx}`)
+      break;
+    default: router.push('/');
+  }
+  // router.push(`/page${idx + 1}?idx=${idx}`)
 };
 const route = useRoute();
 const Idx = route.query.idx;
 const handleLogo = () => {
   router.push('/home');
 };
+const handleLogin = () => {
+  window.open('https://cae.hpccube.com/sso/login')
+};
 </script>
 
 <template>
-  <div class="logo_btn">
+  <div class="logo_btn w-full fixed z-[10]">
     <div class="logo_btn1 cursor-pointer" @click="handleLogo">
       <img src="../assets/img/logo.png" alt="">
     </div>
     <div class="btn_wrapper flex">
       <div class="btn" @click="handleBannerBtn(index)" v-for="(item, index) in logoBtnArr" :class="{'btn_active': Number(Idx) === index}" :key="item.id">
-        <div>{{ item.text }}</div>
-        <div>+</div>
+        <div class="font-semibold">{{ item.text }}</div>
+<!--        <div>+</div>-->
       </div>
     </div>
-    <div class="login_wrapper pr-[60px] text-[#232323] text-xl font-medium cursor-pointer">登录</div>
+    <div class="login_wrapper pr-[60px] text-[#232323] font-semibold text-[16px] font-medium cursor-pointer" @click="handleLogin">登录</div>
   </div>
 </template>
 
 <style scoped lang="scss">
+.login_wrapper {
+  &:hover {
+    color: #0055D5;
+  }
+}
 .logo_btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  height: 120px;
+  height: 80px;
+  background: #fff;
   .logo_btn1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120px;
+    height: 80px;
     font-size: 45px;
     padding-left: 60px;
     font-family: yixinchongfenghao, sans-serif;
@@ -57,7 +77,7 @@ const handleLogo = () => {
   .btn {
     flex: 1;
     width: 180px;
-    height: 120px;
+    height: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -77,7 +97,7 @@ const handleLogo = () => {
       content: '';
       position: absolute;
       width: 1px;
-      height: 120px;
+      height: 80px;
       background: #E0E0E0;
       top: 0;
       right: 0;
@@ -86,7 +106,7 @@ const handleLogo = () => {
       content: '';
       position: absolute;
       width: 1px;
-      height: 120px;
+      height: 80px;
       background: #E0E0E0;
       top: 0;
       left: 0;

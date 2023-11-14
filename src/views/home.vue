@@ -104,7 +104,7 @@ onMounted(() => {
 <template>
   <div ref="container" class="pc_container hidden md:block">
     <Header />
-    <div class="banner-wrapper">
+    <div class="banner-wrapper pt-[80px]">
       <div class="banner">
         <img src="../assets/img/banner_1.png" alt="">
       </div>
@@ -631,61 +631,6 @@ onMounted(() => {
   .banner-wrapper {
     position: relative;
   }
-  /*.logo_btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    height: 120px;
-    .logo_btn1 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 120px;
-      font-size: 45px;
-      padding-left: 60px;
-      font-family: yixinchongfenghao, sans-serif;
-      color: #7E7E7E;
-      img {
-        height: 80px;
-        width: 220px;
-      }
-    }
-    .btn {
-      flex: 1;
-      width: 180px;
-      height: 120px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(255,255,255,0.6);
-      position: relative;
-      cursor: pointer;
-      &:hover {
-        background: #5B95F8;
-        color: #fff;
-      }
-      &:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        width: 1px;
-        height: 120px;
-        background: #E0E0E0;
-        top: 0;
-        right: 0;
-      }
-      &:first-child::before {
-        content: '';
-        position: absolute;
-        width: 1px;
-        height: 120px;
-        background: #E0E0E0;
-        top: 0;
-        left: 0;
-      }
-    }
-  }*/
   .banner_text {
     position: absolute;
     width: 761px;
