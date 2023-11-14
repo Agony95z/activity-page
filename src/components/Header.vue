@@ -70,8 +70,8 @@ const handleLogin = () => {
     font-family: yixinchongfenghao, sans-serif;
     color: #7E7E7E;
     img {
-      height: 80px;
-      width: 220px;
+      height: 60px;
+      width: 172px;
     }
   }
   .btn {

@@ -38,7 +38,7 @@ const featureArr = [
 const container = ref(null);
 
 onMounted(() => {
-  container.value.scrollTop = 0;
+  document.querySelector('html').scrollTop = 0;
 });
 </script>
 

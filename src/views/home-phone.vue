@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import HeaderPhone from "../components/HeaderPhone.vue";
 import TabsPhone from "../components/TabsPhone.vue";
-import SwiperPhone from "../components/SwiperPhone.vue";
+import SwiperPhoneHome from "../components/SwiperPhoneHome.vue";
 const featureArr = [
   {id:1, text: '先进内核'},
   {id:2, text: '海量算力'},
@@ -58,7 +58,7 @@ const softwareArr = [
       <div class="text-[20px] text-[#333] font-semibold text-center mb-[20px]">奖励荣誉</div>
       <div class="text-[14px] font-medium text-center text-[#232323] mb-2.5">中国空气动力学会科学技术一等奖</div>
 
-      <swiper-phone></swiper-phone>
+      <swiper-phone-home></swiper-phone-home>
     </div>
   </div>
 </template>

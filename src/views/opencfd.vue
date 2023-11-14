@@ -65,6 +65,23 @@ const timeAwardsArr = ref({
     }
   ],
 });
+const timeAwardsArrPhone = ref([
+    {
+      id: 1, text1: '2013年', text2: '陕西省科技二等奖', text3: '科学技术奖一等奖', text4: '中国科学院超级计算“佳应用奖”', url: honor_5,
+    },
+    {
+      id: 1, text1: '2018年', text2: '陕西省科技二等奖', text3: '天津超算“天河应用创新优秀奖”', url: honor_4,
+    },
+    {
+      id: 1, text1: '2019年', text2: '“中国科学院信息化优秀案例”奖', url: honor_3,
+    },
+    {
+      id: 1, text1: '2020年', text2: '广州超算“天河之星”优秀应用奖', url: honor_2,
+    },
+    {
+      id: 1, text1: '2022年', text2: '中国空气动力学会科学技术一等奖(自然科学类)', text3: '中国空气动力学会是国家一级学会，也是国内唯一一家空气动力学专业的社会团体。学会于1980年由中国科协批准成立，并报原国防科工委批准备案，于1991年7月在民政部登记注册。1997年根据中办、国务院有关文件要求，明确学会挂靠单位是中国空气动力研究与发展中心，业务主管单位是中国科协，登记管理单位是民政部。', url: honor_1,
+    }
+  ]);
 const handleYear = (idx) => {
   timeArr.value.forEach((item, index) => {
     item.active = index === idx;
@@ -101,13 +118,13 @@ const handleRight = () => {
 };
 
 onMounted(() => {
-  container.value.scrollTop = 0;
+  document.querySelector('html').scrollTop = 0;
   offserX.value = fa.value.clientWidth - son.value.clientWidth;
 });
 </script>
 
 <template>
-  <div ref="container" class="pc_container">
+  <div ref="container" class="pc_container hidden md:block">
     <Header />
     <div class="banner-wrapper pt-[80px]">
       <div class="banner">
@@ -225,9 +242,9 @@ onMounted(() => {
       </div>
     </div>
   </div>
-<!--  <div class="block md:hidden">
-    <cfd-phone></cfd-phone>
-  </div>-->
+  <div class="block md:hidden">
+    <cfd-phone :feature-arr="featureArr" :swiper-arr="softArr" :time-awards-arr="timeAwardsArrPhone"></cfd-phone>
+  </div>
 </template>
 
 <style scoped lang="scss">

@@ -15,6 +15,12 @@ import soft_2 from '@/assets/img/soft_2.svg';
 import soft_3 from '@/assets/img/soft_3.svg';
 import soft_4 from '@/assets/img/soft_4.svg';
 
+import honor_1 from '@/assets/img/honor_1.png';
+import honor_2 from '@/assets/img/honor_2.png';
+import honor_3 from '@/assets/img/cdem_honor_1.png';
+import honor_4 from '@/assets/img/honor_4.png';
+import honor_5 from '@/assets/img/honor_5.png';
+
 const router = useRouter();
 const proArr = [
   {
@@ -34,7 +40,7 @@ const proArr = [
     img: con_2
   },
   {
-    id: 1,
+    id: 3,
     text_1: 'CADO分析系统',
     text_2: 'CADO',
     text_3: '了解更多',
@@ -42,11 +48,11 @@ const proArr = [
     img: con_3
   },
   {
-    id: 1,
+    id: 4,
     text_1: '非线性力学国家重点实验室',
-    text_2: 'xScale跨尺度力学计算软件',
+    text_2: 'SiMech跨尺度力学计算软件',
     text_3: '了解更多',
-    text_4: 'xScale构建了自主的前端界面+后端计算基础框架，前端界面包括前处理、计算调用、后处理、可视化功能；后端计算包括多个不同尺度的计算力学模块，针对高铁、海洋、航空、盾构等工程结构开展了广泛应用，面向具体需求，可实现高度定制化的应用开发。',
+    text_4: 'SiMech构建了自主的前端界面+后端计算基础框架，前端界面包括前处理、计算调用、后处理、可视化功能；后端计算包括多个不同尺度的计算力学模块，针对高铁、海洋、航空、盾构等工程结构开展了广泛应用，面向具体需求，可实现高度定制化的应用开发。',
     img: con_4
   },
 ];
@@ -54,8 +60,8 @@ const honorArr = [
   {id: 1, text: '国家超算广州中心“天河之星”优秀应用奖'},
   {id: 2, text: '中国空气动力学会科学技术一等奖'},
   {id: 3, text: '地质体连续-非连续数值分析方法CDEM'},
-  {id: 4, text: '全国并行应用挑战赛“最佳应用奖”'},
-  {id: 5, text: '全国并行应用挑战赛“最佳应用奖”'},
+  {id: 4, text: '天津超算“天河应用创新优秀奖”'},
+  {id: 5, text: '中国科学院超级计算“最佳应用奖”'},
 ];
 const softwareArr = [
   {id: 1, text: '3大领域核心求解器', img: soft_1},
@@ -92,11 +98,32 @@ const activeNum = ref(0);
 const handleHonor = (index) => {
   activeNum.value = index;
 }
-const handleMore = () => {
-  router.push(`/page2?idx=1`)
+const honorPicArr = [
+  {id: 1, text: '广州超算“天河之星”优秀应用奖', url: honor_2},
+  {id: 2, text: '中国空气动力学会是国家一级学会，也是国内唯一一家空气动力学专业的社会团体。学会于1980年由中国科协批准成立，并报原国防科工委批准备案，于1991年7月在民政部登记注册。1997年根据中办、国务院有关文件要求，明确学会挂靠单位是中国空气动力研究与发展中心，业务主管单位是中国科协，登记管理单位是民政部。', url: honor_1},
+  {id: 3, text: '地质体连续-非连续数值分析方法CDEM', url: honor_3},
+  {id: 4, text: '天津超算“天河应用创新优秀奖”', url: honor_4},
+  {id: 5, text: '中国科学院超级计算“最佳应用奖”', url: honor_5},
+];
+console.log(honorPicArr[activeNum.value], 'honorPicArr[activeNum].url')
+const honorPicUrl = computed(() => honorPicArr[activeNum.value].url);
+const honorPicText = computed(() => honorPicArr[activeNum.value].text);
+const handleMore = (idx) => {
+  switch (idx) {
+    case 0: router.push(`/opencfd?idx=${idx}`)
+      break;
+    case 1: router.push(`/cdem?idx=${idx}`)
+      break;
+    case 2: router.push(`/cado?idx=${idx}`)
+      break;
+    case 3: router.push(`/simech?idx=${idx}`)
+      break;
+    default: router.push('/');
+  }
+  // router.push(`/opencfd?idx=0`)
 };
 onMounted(() => {
-  container.value.scrollTop = 0;
+  document.querySelector('html').scrollTop = 0;
   isShowArrow.value = computed(() => fa.value.clientWidth <= contentContainer.value.clientWidth);
 });
 </script>
@@ -123,7 +150,7 @@ onMounted(() => {
     <div class="choose_us">
       <div class="us_l">
         <div>WHY CHOOSE US</div>
-        <div>选择我们的四大理由</div>
+        <div>选择我们的理由</div>
       </div>
       <div class="us_r">
         <div class="tip">
@@ -186,10 +213,10 @@ onMounted(() => {
         <div ref="fa" class="center" :class="{'flex': !isShowArrow.value, 'justify-center': !isShowArrow.value}">
           <div ref="son" class="over_container" :style="{ transform: transformStyle }">
             <div ref="contentContainer" style="display: flex;">
-              <div class="content" v-for="item in proArr" :key="item.id">
+              <div class="content" v-for="(item, index) in proArr" :key="item.id">
                 <div class="con_1">{{ item.text_1 }}</div>
                 <div class="con_2">{{ item.text_2 }}</div>
-                <div class="con_3" @click="handleMore">
+                <div class="con_3" @click="handleMore(index)">
                   {{ item.text_3 }}
                   <img src="../assets/img/sj.svg" alt="">
                 </div>
@@ -219,12 +246,12 @@ onMounted(() => {
       </div>
       <div class="honor_pic">
         <div class="pic_l">
-          <img src="../assets/img/honor_1.png" alt="">
+          <img class="w-full h-full" :src="honorPicUrl" alt="">
         </div>
         <div class="pic_r">
           <div class="pic_r_1"></div>
           <div class="pic_r_2">
-            <div class="text-[14px] text-white">中国空气动力学会是国家一级学会，也是国内唯一一家空气动力学专业的社会团体。学会于1980年由中国科协批准成立，并报原国防科工委批准备案，于1991年7月在民政部登记注册。1997年根据中办、国务院有关文件要求，明确学会挂靠单位是中国空气动力研究与发展中心，业务主管单位是中国科协，登记管理单位是民政部。</div>
+            <div class="text-[14px] text-white">{{ honorPicText }}</div>
           </div>
         </div>
       </div>

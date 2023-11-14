@@ -2,19 +2,13 @@
 import HeaderPhone from "../components/HeaderPhone.vue";
 import TabsPhone from "../components/TabsPhone.vue";
 import SwiperPhone from "../components/SwiperPhone.vue";
-const featureArr = [
-  {id:1, text: '先进内核'},
-  {id:2, text: '海量算力'},
-  {id:3, text: '高效并行'},
-  {id:4, text: '多场耦合'},
-  {id:5, text: '即开即用'},
-];
-const softwareArr = [
-  {id: 1, text: '3大领域核心求解器'},
-  {id: 2, text: '1款多物理场通用仿真云平台'},
-  {id: 3, text: '≥12个典型场景应用APP'},
-  {id: 4, text: '≥1000个中间层接口脚本'},
-];
+import SwiperPhoneAppCase from "../components/SwiperPhoneAppCase.vue";
+
+defineProps({
+  featureArr: Array,
+  swiperArr: Array,
+  timeAwardsArr: Array,
+})
 </script>
 
 <template>
@@ -22,58 +16,63 @@ const softwareArr = [
     <header-phone></header-phone>
     <div class="p-banner pt-[40px]">
       <div class="banner relative">
-        <img src="../assets/img/p_banner.svg" alt="">
-        <img class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" src="../assets/img/p_banner_text.svg" alt="">
+        <img src="../assets/img/banner_2.png" alt="">
+        <img class="absolute w-[220px] top-1/2 left-1/2 -translate-y-[220%] -translate-x-1/2" src="../assets/img/banner_2_text.svg" alt="">
+        <img class="w-[300px] h-[54px] mt-[5%] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" src="../assets/img/faceid.svg" alt="">
       </div>
-      <div class="banner-us h-[75px] flex flex-col justify-center items-center">
-        <div class="text-white font-semibold text-[14px]">选择我们的理由 WHY CHOOSE US</div>
-        <div class="flex text-white mt-2.5">
-          <p class="px-2 text-[12px]" v-for="item in featureArr" :key="item.id">{{ item.text }}</p>
+      <div class="banner-us relative h-[50px] flex flex-col justify-center items-center">
+        <div class="absolute w-[100px] h-[100px] bg-[#333] bottom-0 left-1/2 -translate-x-1/2"></div>
+      </div>
+    </div>
+    <div class="software pt-[30px] relative">
+      <div class="text-[20px] text-[#000] font-semibold text-center w-full">OpenCFD简介</div>
+      <div class="absolute font-semibold text-[20px] text-[#e0e0e0] top-[15px] left-1/2 -translate-x-1/2 z-[-5]">About OpenCFD</div>
+    </div>
+    <div class="px-[15px] mt-5 w-full border-box text-[12px] text-[#000] leading-[22px]">
+      OpenCFD软件是中国科学院力学研究所李新亮研究员课题组开发的一套高精度计算流体力学软件。该软件集成了课题组自行开发的系列高精度差分格式及当前流行的多种高精度差分格式，其最高计算精度最高可达7阶，主要用于湍流及燃烧直接数值模拟、大涡模拟等高分辨率模拟。此外，该软件具有非常强的并行性能，可支持上百亿网格，数十万CPU核心以及数万块GPU卡超大规模异构并行。
+    </div>
+
+    <div class="px-[15px] w-full relative pt-[30px] pb-5 mt-5 bg-[#F7F7F8] z-[-5]">
+      <div class="text-[20px] text-[#000] font-semibold text-center w-full">功能特色</div>
+      <div class="absolute font-semibold text-[20px] text-[#e0e0e0] top-[15px] left-1/2 -translate-x-1/2 z-[-2]">FEATURES</div>
+      <div class="mt-[15px] w-full">
+        <div class="w-full mt-5" v-for="item in featureArr" :key="item.id">
+          <div class="m-auto flex justify-center items-center w-[160px] h-[30px] feature_1 text-[12px] text-[#fff] font-semibold">{{ item.text }}</div>
+          <div class="mx-auto mt-2.5 flex flex-col justify-center items-center">
+            <div class="text-[#232323] text-[12px] leading-[22px]">{{ item.content }}</div>
+            <div class="text-[#232323] text-[12px] leading-[22px]">{{ item.content2 }}</div>
+            <div class="text-[#232323] text-[12px] leading-[22px]">{{ item.content3 }}</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="software mt-[30px]">
-      <div class="text-[20px] mb-[25px] w-full text-center font-semibold text-[#333]">软件中心</div>
-    </div>
-    <div class="px-[15px] w-full border-box">
-      <div class="flex justify-between">
-        <p class="soft-text flex-1 h-[35px] leading-[35px] text-center text-[12px] text-white font-medium" v-for="item in softwareArr.slice(0, 2)" :key="item.id">{{ item.text }}</p>
-      </div>
-    </div>
-    <div class="px-[15px] w-full border-box mt-2.5">
-      <div class="flex justify-between">
-        <p class="soft-text flex-1 h-[35px] leading-[35px] text-center text-[12px] text-white font-medium" v-for="item in softwareArr.slice(2, 4)" :key="item.id">{{ item.text }}</p>
+
+    <div class="pt-[30px] relative">
+      <div class="text-[20px] text-[#000] font-semibold text-center w-full">应用案例</div>
+      <div class="absolute w-full text-center font-semibold text-[20px] text-[#e0e0e0] top-[15px] left-1/2 -translate-x-1/2 z-[-5]">FUNCTIONAL MODULE</div>
+      <div class="mt-[1px]">
+        <swiper-phone-app-case :arr="swiperArr"></swiper-phone-app-case>
       </div>
     </div>
 
-    <div class="my-[40px] flex justify-center items-center px-[15px] border-box">
-      <img src="../assets/img/p_soft.png" alt="">
+    <div class="pt-[30px] relative bg-[#F7F7F8] z-[-5]">
+      <div class="text-[20px] text-[#000] font-semibold text-center w-full">获奖情况</div>
+      <div class="absolute w-full text-center font-semibold text-[20px] text-[#e0e0e0] top-[15px] left-1/2 -translate-x-1/2 z-[-3]">APPLICATION CASES</div>
     </div>
-
-    <div class="tabs px-[15px] border-box flex justify-center w-full">
-      <tabs-phone></tabs-phone>
-    </div>
-
-    <div class="awards bg-[#F7F7F8] px-[8px] pt-[30px] pb-5 border-box">
-      <div class="text-[20px] text-[#333] font-semibold text-center mb-[20px]">奖励荣誉</div>
-      <div class="text-[14px] font-medium text-center text-[#232323] mb-2.5">中国空气动力学会科学技术一等奖</div>
-
-      <swiper-phone></swiper-phone>
+    <div class="pt-[30px] bg-[#F7F7F8]">
+      <swiper-phone :arr="timeAwardsArr"></swiper-phone>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .phone-container {
-  .banner-us {
-    background: #333;
-  }
-  .soft-text {
+  .feature_1 {
     background: linear-gradient(90deg, #3545BD 0%, #528EE8 100%);
     border-radius: 2px;
-    &:first-child {
-      margin-right: 10px;
-    }
+    //&:first-child {
+    //  margin-right: 10px;
+    //}
   }
 }
 

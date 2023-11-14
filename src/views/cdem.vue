@@ -127,7 +127,7 @@ const handleRight = () => {
 };
 
 onMounted(() => {
-  container.value.scrollTop = 0;
+  document.querySelector('html').scrollTop = 0;
   offserX.value = fa.value.clientWidth - son.value.clientWidth;
 });
 </script>
@@ -653,7 +653,7 @@ onMounted(() => {
   }
   .banner_text {
     position: absolute;
-    width: 580px;
+    width: 1012px;
     height: 200px;
     top: 50%;
     left: 50%;
