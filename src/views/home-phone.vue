@@ -56,7 +56,7 @@ const softwareArr = [
 
     <div class="awards bg-[#F7F7F8] px-[8px] pt-[30px] pb-5 border-box">
       <div class="text-[20px] text-[#333] font-semibold text-center mb-[20px]">奖励荣誉</div>
-      <div class="text-[14px] font-medium text-center text-[#232323] mb-2.5">中国空气动力学会科学技术一等奖</div>
+<!--      <div class="text-[14px] font-medium text-center text-[#232323] mb-2.5">中国空气动力学会科学技术一等奖</div>-->
 
       <swiper-phone-home></swiper-phone-home>
     </div>

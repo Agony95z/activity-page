@@ -33,7 +33,7 @@ const proArr = [
   },
   {
     id: 2,
-    text_1: '数值分析系统',
+    text_1: '连续•非连续数值分析系统',
     text_2: 'CDEM数值分析系统',
     text_3: '了解更多',
     text_4: '中国科学院力学研究所历时25年自主研发，基于广义拉格朗日方程理论框架，将连续介质数值方法与非连续介质数值方法进行深度融合，在能量层面实现了有限元、离散元及无网格算法的统一，可实现静动载荷下地质体及人工材料渐进破坏过程的模拟。',
@@ -78,8 +78,8 @@ const transformStyle = computed({
   }
 });
 
-const stepL = ref(-30);
-const stepR = ref(30);
+const stepL = ref(-100);
+const stepR = ref(100);
 const fa = ref(null);
 const son = ref(null);
 const contentContainer = ref(null);
@@ -105,7 +105,6 @@ const honorPicArr = [
   {id: 4, text: '天津超算“天河应用创新优秀奖”', url: honor_4},
   {id: 5, text: '中国科学院超级计算“最佳应用奖”', url: honor_5},
 ];
-console.log(honorPicArr[activeNum.value], 'honorPicArr[activeNum].url')
 const honorPicUrl = computed(() => honorPicArr[activeNum.value].url);
 const honorPicText = computed(() => honorPicArr[activeNum.value].text);
 const handleMore = (idx) => {
@@ -140,10 +139,10 @@ onMounted(() => {
       </div>
       <div class="learn_more" @click="handleMore">
         <div class="jump_wrapper">
-          <div>了解更多</div>
-          <div class="more_arrow">
-            <img src="../assets/img/jiantou.svg" alt="">
-          </div>
+          <div>力源 久宇</div>
+<!--          <div class="more_arrow">-->
+<!--            <img src="../assets/img/jiantou.svg" alt="">-->
+<!--          </div>-->
         </div>
       </div>
     </div>
@@ -650,7 +649,7 @@ onMounted(() => {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: jumping 0.8s infinite;
+    //animation: jumping 0.8s infinite;
   }
 }
 .pc_container {

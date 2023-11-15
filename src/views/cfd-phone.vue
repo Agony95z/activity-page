@@ -22,7 +22,9 @@ defineProps({
         <img class="w-[300px] h-[54px] mt-[5%] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" src="../assets/img/faceid.svg" alt="">
       </div>
       <div class="banner-us relative h-[50px] flex flex-col justify-center items-center">
-        <div class="absolute w-[100px] h-[100px] bg-[#333] bottom-0 left-1/2 -translate-x-1/2"></div>
+        <div class="absolute w-[100px] h-[100px] bottom-0 left-1/2 -translate-x-1/2 text-[0]">
+          <img src="../assets/img/opencfd_phone.png" alt="">
+        </div>
       </div>
     </div>
     <div class="software pt-[30px] relative">

@@ -7,8 +7,11 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Drawer: typeof import('./src/components/Drawer.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElCarousel: typeof import('element-plus/es')['ElCarousel']
     ElCarouselItem: typeof import('element-plus/es')['ElCarouselItem']
+    ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     Header: typeof import('./src/components/Header.vue')['default']
@@ -20,7 +23,6 @@ declare module 'vue' {
     SwiperPhone: typeof import('./src/components/SwiperPhone.vue')['default']
     SwiperPhoneAppCase: typeof import('./src/components/SwiperPhoneAppCase.vue')['default']
     SwiperPhoneHome: typeof import('./src/components/SwiperPhoneHome.vue')['default']
-    SwiperPhoneHome1: typeof import('./src/components/SwiperPhoneHome1.vue')['default']
     TabsPhone: typeof import('./src/components/TabsPhone.vue')['default']
     Timeline: typeof import('./src/components/timeline.vue')['default']
     TitleWrapper: typeof import('./src/components/TitleWrapper.vue')['default']

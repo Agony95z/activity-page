@@ -3,6 +3,7 @@ import { computed, onMounted, ref } from "vue";
 import Header from '@/components/Header.vue';
 import TitleWrapper from "@/components/TitleWrapper.vue";
 import TransWrapper from "@/components/TransWrapper.vue";
+import SimechPhone from "./simech-phone.vue";
 import soft_1 from '@/assets/img/mech_soft_1.png';
 import soft_2 from '@/assets/img/mech_soft_2.png';
 import soft_3 from '@/assets/img/mech_soft_3.png';
@@ -46,7 +47,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="container" class="pc_container">
+  <div ref="container" class="pc_container hidden md:block">
     <Header />
     <div class="banner-wrapper pt-[80px]">
       <div class="banner">
@@ -140,6 +141,9 @@ onMounted(() => {
       </div>
     </div>
     <trans-wrapper :arr="softArr"></trans-wrapper>
+  </div>
+  <div class="block md:hidden">
+    <simech-phone :feature-arr="featureArr" :cfd-arr="cfdArr" :swiper-arr="softArr"></simech-phone>
   </div>
 </template>
 
