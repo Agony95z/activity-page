@@ -134,17 +134,17 @@ onMounted(() => {
       <div class="banner">
         <img src="../assets/img/banner_1.png" alt="">
       </div>
-      <div class="banner_text">
-        <img src="../assets/img/banner_1_text.png" alt="">
-      </div>
-      <div class="learn_more" @click="handleMore">
-        <div class="jump_wrapper">
-          <div>力源 久宇</div>
+<!--      <div class="banner_text">-->
+<!--        <img src="../assets/img/banner_1_text.png" alt="">-->
+<!--      </div>-->
+<!--      <div class="learn_more" @click="handleMore">-->
+<!--        <div class="jump_wrapper">-->
+<!--          <div>力源 久宇</div>-->
 <!--          <div class="more_arrow">-->
 <!--            <img src="../assets/img/jiantou.svg" alt="">-->
 <!--          </div>-->
-        </div>
-      </div>
+<!--        </div>-->
+<!--      </div>-->
     </div>
     <div class="choose_us">
       <div class="us_l">

@@ -22,8 +22,8 @@ const softwareArr = [
     <header-phone></header-phone>
     <div class="p-banner pt-[40px]">
       <div class="banner relative">
-        <img src="../assets/img/p_banner.svg" alt="">
-        <img class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" src="../assets/img/p_banner_text.svg" alt="">
+        <img src="../assets/img/banner_1.png" alt="">
+<!--        <img class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" src="../assets/img/p_banner_text.svg" alt="">-->
       </div>
       <div class="banner-us h-[75px] flex flex-col justify-center items-center">
         <div class="text-white font-semibold text-[14px]">选择我们的理由 WHY CHOOSE US</div>

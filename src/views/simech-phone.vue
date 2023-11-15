@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import HeaderPhone from "../components/HeaderPhone.vue";
 // import TabsPhone from "../components/TabsPhone.vue";
-import SwiperPhone from "../components/SwiperPhone.vue";
+// import SwiperPhone from "../components/SwiperPhone.vue";
 import SwiperPhoneAppCase from "../components/SwiperPhoneAppCase.vue";
 
 defineProps({
